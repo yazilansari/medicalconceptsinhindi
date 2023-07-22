@@ -67,9 +67,15 @@
                     </a>
                 </li>
                  <li class="<?php echo ($this->uri->uri_string() == 'subcategory/lists_new') ? 'active' : '';?>">
-                    <a href="<?php echo base_url("subcategory/lists_new?t=1609394548") ?>">
+                    <a href="<?php echo base_url("subcategory/lists_new?t=$timestamp") ?>">
                     <i class="material-icons">account_box</i>
                     <span>Sub Category New</span>
+                    </a>
+                </li>
+                <li <?php echo ($this->uri->uri_string() == 'subcategory/lists_image') ? 'active' : '';?>>
+                    <a href="<?php echo base_url("subcategory/lists_image?t=$timestamp") ?>">
+                    <i class="material-icons">collections</i>
+                    <span>Sub Category Images</span>
                     </a>
                 </li>
                 <li <?php echo ($mainmenu == 'posts') ? 'class="active"': ''; ?>>
@@ -85,7 +91,7 @@
                     </a>
                 </li>
                 <li class="<?php echo ($this->uri->uri_string() == 'contributors/lists_new') ? 'active' : '';?>">
-                    <a href="<?php echo base_url("contributors/lists_new?t=1609394548") ?>">
+                    <a href="<?php echo base_url("contributors/lists_new?t=$timestamp") ?>">
                     <i class="material-icons">person_add</i>
                     <span>Contributors New</span>
                     </a>
@@ -97,13 +103,13 @@
                     </a>
                 </li>
                 <li class="<?php echo ($this->uri->uri_string() == 'comments/lists_new') ? 'active' : '';?>">
-                    <a href="<?php echo base_url("comments/lists_new?t=1609394548") ?>">
+                    <a href="<?php echo base_url("comments/lists_new?t=$timestamp") ?>">
                     <i class="material-icons">public</i>
                     <span>Comments New</span>
                     </a>
                 </li>
                 <li class="<?php echo ($this->uri->uri_string() == 'gallery/lists') ? 'active' : '';?>">
-                    <a href="<?php echo base_url("gallery/lists?t=1609394548") ?>">
+                    <a href="<?php echo base_url("gallery/lists?t=$timestamp") ?>">
                     <i class="material-icons">collections</i>
                     <span>Gallery</span>
                     </a>

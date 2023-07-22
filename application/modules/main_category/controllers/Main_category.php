@@ -47,6 +47,35 @@ class Main_category extends Generic_Controller
 		echo json_encode($json);
 	}
 
+	function options_new(){
+		$this->session->is_Ajax_and_logged_in();
+
+		$limit = $this->dropdownlength;
+		$page = (int) $this->input->post('page') - 1;
+		$page = ($page <= 0) ? 0 : $page;
+
+		$new = array(); $json['results'] = array(); $filters = array();
+
+		$s_term = (isset($_POST['search'])) ? $this->db->escape_like_str($_POST['search']) : '';
+		$id = (isset($_POST['id'])) ? (int) $this->input->post('id') : 0;
+
+		if($id){ $filters['main_category_id'] = $id; }
+
+		$_options = $this->model->get_collection($filters, $s_term, $page * $limit, $limit);
+
+		$_opt_count = count($this->model->get_collection($filters, $s_term));
+
+		foreach($_options as $option){
+			$new = [ 'id' => $option->main_category_id, 'text' => $option->main_category_name ];
+			array_push($json['results'], $new);
+		}
+		
+		$more = ($_opt_count > count($_options)) ? TRUE : FALSE;
+		$json['pagination']['more'] = $more;
+
+		echo json_encode($json);
+	}
+
 
 	function lists(){
 		

@@ -3,15 +3,18 @@
 	var main_category = $('#main_category_id');
 	var category = $('#category_id');
 	//var folder = $('#folder_id');
+	var sub_category = $('#sub_category_id');
 
 	if(type=='edit'){
 		$("#main_category_id").prepend('<div class="disabled-select"></div>');
 		$("#category_id").prepend('<div class="disabled-select"></div>');
 		//$("#folder_id").prepend('<div class="disabled-select"></div>');
+		$("#sub_category_id").prepend('<div class="disabled-select"></div>');
 
 		$("#category_id").attr('enabled','enabled');
 		$("#main_category_id").attr('enabled','enabled');
 		//$("#folder_id").attr('enabled','enabled');
+		$("#sub_category_id").attr('enabled','enabled');
 
 	}
 
@@ -21,7 +24,7 @@
 			placeholder: "Select "+ placeholder_txt,
 		    allowClear: true,
 		    ajax: {
-			    url: baseUrl + controller + '/options',
+			    url: baseUrl + controller + '/options_new',
 			    dataType: 'json',
 			    type: 'POST',
 			    data: function (params) {
@@ -32,7 +35,7 @@
 				    }
 				    if(data.id){ query['id'] = data.id; }
 				    if(data.main_id){ query['main_id'] = data.main_id; }
-				    //console.log(query);
+				    console.log(query);
 				    // Query parameters will be ?search=[term]&page=[page]
 				    return query;
 				    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
@@ -82,6 +85,7 @@
 
 			data = {id: $(this).val() }
 			load('folder_id', 'Folder', 'folder', true, r_attempt_to, data);
+			load('sub_category_id', 'Sub Category', 'subcategory', true, r_attempt_to, data);
 
 			main_category_data = $("#category_id option:selected").text();
 			main_category_data = $.trim(main_category_data);
@@ -89,8 +93,28 @@
 		});
 	}
 
+	// if(sub_category.length){
+	// 	sub_category.on('change', function(){
+			
+	// 		var c_load_cnt = 0; 
+	// 		var s_load_cnt = 0;
+
+	// 		var sub_category_data = '';
+	// 		c_load_cnt++;
+	// 		var r_attempt_to = (c_load_cnt > 1) ? 'reset' : 'load';
+
+	// 		data = {id: $(this).val() }
+	// 		load('folder_id', 'Folder', 'folder', true, r_attempt_to, data);
+
+	// 		main_category_data = $("#sub_category_id option:selected").text();
+	// 		main_category_data = $.trim(main_category_data);
+
+	// 	});
+	// }
+
 	load('category_id', 'Category', 'category', true);
 	load('main_category_id', 'Main Category', 'main_category', true);
+	load('sub_category_id', 'Sub Category', 'subcategory', true);
 	
 	
 })(jQuery);

@@ -73,6 +73,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?php echo base_url("subcategory/lists_image?t=1609394548") ?>">
+                    <i class="material-icons">collections</i>
+                    <span>Sub Category Images</span>
+                    </a>
+                </li>
+                <li>
                     <a href="<?php echo base_url("posts/lists?all=all_results") ?>">
                     <i class="material-icons">comment</i>
                     <span>Posts</span>

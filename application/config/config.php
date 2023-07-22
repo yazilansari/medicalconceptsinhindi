@@ -25,6 +25,8 @@ $config['sub_category_images_upload_path'] = './assets/uploaded_data/subcategory
 $config['sub_category_image_exists'] = '/assets/uploaded_data/subcategory_img/';
 //doctor images path to get image
 $config['sub_category_images_path'] = $config['base_url'] . 'uploads/assets/uploaded_data/subcategory_img/';
+$config['sub_category_images_path_list'] = $config['base_url'] . '../uploads/assets/uploaded_data/subcategory_img/';
+$config['sub_category_images_path_edit'] = $config['base_url'] . '../../../uploads/assets/uploaded_data/subcategory_img/';
 
 //Post Image
 $config['posts_images_upload_path'] = './assets/uploaded_data/posts_img/';
