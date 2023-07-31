@@ -85,6 +85,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?php echo base_url("posts/lists_new?all=all_results") ?>">
+                    <i class="material-icons">comment</i>
+                    <span>Posts New</span>
+                    </a>
+                </li>
+                <li>
                     <a href="<?php echo base_url("contributors/lists?t=1609394548") ?>">
                     <i class="material-icons">person_add</i>
                     <span>Contributors</span>

@@ -10,11 +10,11 @@
                 <h2><?= $pg_title ?></h2>
             </div>
             <div class="body">
-                <?php echo form_open("$controller/save",array('id'=>'save-form')); ?>
+                <?php echo form_open("$controller/save_new",array('id'=>'save-form')); ?>
                 <label for="main_category_id">Main Category Name<span class="required">*</span></label>
                 <div class="form-group">
                     <div class="form-line">
-                        <select name="main_category_id" class="form-control" data-placeholder="Select Main Category" id="main_category_id">
+                        <select name="main_category_id" class="form-control" data-placeholder="Select Main Category" id="main_category_id" required>
                             <option></option>
                         </select>
                     </div>
@@ -22,7 +22,7 @@
                 <label for="category_id">Category Name<span class="required">*</span></label>
                 <div class="form-group">
                     <div class="form-line">
-                        <select name="category_id" class="form-control" data-placeholder="Select Category" id="category_id">
+                        <select name="category_id" class="form-control" data-placeholder="Select Category" id="category_id" required>
                             <option></option>
                         </select>
                     </div>
@@ -30,17 +30,17 @@
                 <label for="sub_category_id">Sub Category Name<span class="required">*</span></label>
                 <div class="form-group">
                     <div class="form-line">
-                        <select name="sub_category_id" class="form-control" data-placeholder="Select Sub Category" id="sub_category_id">
+                        <select name="sub_category_id" class="form-control" data-placeholder="Select Sub Category" id="sub_category_id" required>
                             <option></option>
                         </select>
                     </div>
                 </div>
                 <label for="eventdate" class="eventdate">Event Date<span class="required">*</span></label>
                 <div class="form-group">
-                    <input type="date" class="form-control eventdate" id="eventdate" name="eventdate">
+                    <input type="date" class="form-control eventdate" id="eventdate" name="eventdate" required>
                 </div>
                 
-                <label for="eventtime" class="eventtime">Event Time<span class="required">*</span></label>
+                <!-- <label for="eventtime" class="eventtime">Event Time<span class="required">*</span></label>
                 <div class="form-group">
                     <input type="time" class="form-control eventtime" id="eventtime" name="eventtime">
                 </div>
@@ -50,23 +50,23 @@
                     <div class="form-line">
                         <input type="text" class="form-control event_link" id="event_link" name="event_link">
                     </div>
-                </div>
+                </div> -->
                 
                 <label for="contributors_id">Contributor<span class="required">*</span></label>
                 <div class="form-group">
                     <div class="form-line">
-                        <select name="contributors_id" class="form-control" data-placeholder="Select Contributor" id="contributors_id">
+                        <select name="contributors_id" class="form-control" data-placeholder="Select Contributor" id="contributors_id" required>
                             <option></option>
                         </select>
                     </div>
                 </div>
-                <label class="form-label">Posts Title<span class="required">*</span></label>
+                <label class="form-label">Post Title<span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
-                        <input type="text" id="upload_title" name="upload_title" class="form-control" autocomplete="off" maxlength="250">
+                        <input type="text" id="upload_title" name="upload_title" class="form-control" autocomplete="off" maxlength="250" required>
                     </div>
                 </div>
-                <label class="form-label">Meta Title <span class="required">*</span></label>
+                <!-- <label class="form-label">Meta Title <span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="meta_title" name="meta_title" class="form-control" autocomplete="off">
@@ -101,8 +101,8 @@
                     <div class="form-line">
                         <textarea type="text" rows="5" class="form-control" id="short_description" name="short_description"> </textarea>
                     </div>
-                </div>
-                <label for="upload_for_user_type">Upload Data for User Type<span class="required">*</span></label>
+                </div> -->
+                <!-- <label for="upload_for_user_type">Upload Data for User Type<span class="required">*</span></label>
                 <div class="demo-radio-button">                    
                     <input name="upload_for_user_type" type="radio" id="radio_1" value="General">
                     <label for="radio_1">Medical</label>
@@ -111,23 +111,23 @@
                     <input name="upload_for_user_type" type="radio" id="radio_3" value="Both">
                     <label for="radio_3">Both (Doctors and Medical Students)</label>
                 </div>
-                <br>            
-                <label for="upload_type">Upload Type <span class="required">*</span></label>
+                <br>         -->    
+                <label for="upload_type">Type <span class="required">*</span></label>
                 <div class="demo-radio-button">                    
-                    <input name="upload_type" class="upload_types" type="radio" id="image" value="image">
+                    <input name="upload_type" class="upload_types" type="radio" id="image" value="image" required>
                     <label for="image">Image</label>
-                    <input name="upload_type" class="upload_types" type="radio" id="audio" value="audio">
-                    <label for="audio">Audio</label>
-                    <input name="upload_type" class="upload_types" type="radio" id="video" value="video">
+                    <!-- <input name="upload_type" class="upload_types" type="radio" id="audio" value="audio">
+                    <label for="audio">Audio</label> -->
+                    <input name="upload_type" class="upload_types" type="radio" id="video" value="video" required>
                     <label for="video">Video</label>
-                    <input name="upload_type" class="upload_types" type="radio" id="pdf" value="pdf">
-                    <label for="pdf">PDF</label>
+                    <!-- <input name="upload_type" class="upload_types" type="radio" id="pdf" value="pdf">
+                    <label for="pdf">PDF</label> -->
                     <input name="upload_type" class="upload_types" type="radio" id="text" value="text">
                     <label for="text">Text</label>
                 </div>
                 <br>
 
-                <div id='div_video_type'>
+                <!-- <div id='div_video_type'>
                     <label for="video_type">Video Type<span class="required">*</span></label>
                     <div class="demo-radio-button">                    
                         <input name="video_type" type="radio" id="radio_71" value="inhouse">
@@ -135,32 +135,32 @@
                         <input name="video_type" type="radio" id="radio_72" value="youtube">
                         <label for="radio_72">YouTube Video</label>
                     </div><br>
-                </div>
+                </div> -->
 
-                <div id='div_youtube_video' style="display: none;">
-                    <label class="form-label">YouTube Video ID <span class="required">*</span></label>
+                <div id='div_youtube_video'>
+                    <label class="form-label">YouTube Video URL </label>
                     <div class="input-group">
                         <div class="form-line">
-                            <input type="text" id="youtube_video_code" name="youtube_video_code" class="form-control" >
+                            <input type="text" id="youtube_video_code" name="youtube_video_code" class="form-control">
                         </div>
                     </div>
                 </div>
 
                 <div id="description_div">
-                <label class="form-label">Upload Description<span class="required">*</span></label>
+                <label class="form-label">Description</label>
                     <div class="input-group">
                         <div class="form-line">
-                            <textarea class="form-control" id="upload_description" name="upload_description"> </textarea>
+                            <textarea class="form-control" id="upload_description" name="upload_description" required> </textarea>
                             <span name="desc_errors" id="desc_errors"></span>
                         </div>
                     </div>
                 </div>
 
                 <div id="upload_div">
-                    <label class="form-label">Upload File<span class="required">*</span></label>
+                    <label class="form-label">File </label>
                     <div class="input-group">
                         <div class="form-line">
-                            <input type="file" id="upload_path" name="upload_path" class="form-control" >
+                            <input type="file" id="upload_path" name="upload_path" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -168,17 +168,17 @@
                 <label class="form-label">Thumbnail File<span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
-                        <input type="file" id="thumbnail" name="thumbnail" class="form-control" >
+                        <input type="file" id="thumbnail" name="thumbnail" class="form-control" required>
                     </div>
                 </div>
 
-                <label class="form-label">Upload Tags <span class="required">*</span></label>
+                <!-- <label class="form-label">Upload Tags <span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="tags" name="tags" class="form-control" >
                         <span name="error_tags" id="error_tags"></span>
                     </div>
-                </div>
+                </div> -->
 
                <!--  <label class="form-label">Sort Sequence Number <span class="required">*</span></label>
                 <div class="input-group">
@@ -188,7 +188,7 @@
                 </div> -->
 
                 <input type="submit" class="btn btn-primary m-t-15 waves-effect" value="Save" />
-                <a href="<?php echo base_url("$controller/lists?all=all_results") ?>" class="btn btn-danger m-t-15 waves-effect">Cancel</a>
+                <a href="<?php echo base_url("$controller/lists_new?all=all_results") ?>" class="btn btn-danger m-t-15 waves-effect">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
         </div>

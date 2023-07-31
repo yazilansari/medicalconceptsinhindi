@@ -35,8 +35,8 @@
 			}
 			
 		}
-		if(check_upload_types_data=='ppt'){$("#description_div").slideUp();$("#upload_div").slideDown();}
-		if(check_upload_types_data=='pdf'){$("#description_div").slideUp();$("#upload_div").slideDown();}
+		// if(check_upload_types_data=='ppt'){$("#description_div").slideUp();$("#upload_div").slideDown();}
+		// if(check_upload_types_data=='pdf'){$("#description_div").slideUp();$("#upload_div").slideDown();}
 		if(check_upload_types_data=='text'){$("#upload_div").slideUp();$("#description_div").slideDown();}	
 		if(check_upload_types_data=='image'){$("#description_div").slideUp();$("#upload_div").slideDown();}		
 	}

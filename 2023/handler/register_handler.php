@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 
     $count = 0;
     if($is_referral_code == 'Yes') {
-        if($referral_code != 'THYRONORM' && $referral_code != 'INSUGEN' && $referral_code != 'TELMIKIND' && $referral_code != 'DLS' && $referral_code != 'ZUCANORM' && $referral_code != 'OXRA' && $referral_code != 'ALKEM' && $referral_code != 'ZORYL' && $referral_code != 'MCH' && $referral_code != 'HBC' && $referral_code != 'MCHUSV' && $referral_code != 'ELIXIR' && $referral_code != '9310442098' && $referral_code != 'EMCURE') {
+        if($referral_code != 'THYRONORM' && $referral_code != 'INSUGEN' && $referral_code != 'TELMIKIND' && $referral_code != 'DLS' && $referral_code != 'ZUCANORM' && $referral_code != 'OXRA' && $referral_code != 'ALKEM' && $referral_code != 'ZORYL' && $referral_code != 'MCH' && $referral_code != 'HBC' && $referral_code != 'MCHUSV' && $referral_code != 'ELIXIR' && $referral_code != '9310442098' && $referral_code != 'EMCURE' && $referral_code != 'HIND' && $referral_code != 'SNMC' && $referral_code != 'GZB' && $referral_code != 'NKS' && $referral_code != 'AYO' && $referral_code != 'GKP' && $referral_code != 'SNP' && $referral_code != 'LKO' && $referral_code != 'GYN' && $referral_code != 'PRAYAG' && $referral_code != 'SHUBHRA' && $referral_code != 'LAKSHITA' && $referral_code != 'ASHU' && $referral_code != 'NEHA' && $referral_code != 'SACHIN' && $referral_code != 'VARNIK' && $referral_code != 'SIMS' && $referral_code != 'OPHTH' && $referral_code != 'MED1' && $referral_code != 'MED2' && $referral_code != 'MED3' && $referral_code != 'PATH' && $referral_code != 'GMC' && $referral_code != 'MZN') {
             header("Location: ../registration.php?type=".$encode_type."&msg=Invalid Referral Code");exit();
         }
 
@@ -73,6 +73,54 @@ if (isset($_POST['submit'])) {
         $max_count = 5000;
     } else if($referral_code == 'EMCURE') {
         $max_count = 250;
+    } else if($referral_code == 'HIND') {
+        $max_count = 1000;
+    } else if($referral_code == 'SNMC') {
+        $max_count = 1000;
+    } else if($referral_code == 'GZB') {
+        $max_count = 1000;
+    } else if($referral_code == 'NKS') {
+        $max_count =1000;
+    } else if($referral_code == 'AYO') {
+        $max_count = 1000;
+    } else if($referral_code == 'GKP') {
+        $max_count = 1000;
+    } else if($referral_code == 'SNP') {
+        $max_count = 1000;
+    } else if($referral_code == 'LKO') {
+        $max_count = 1000;
+    } else if($referral_code == 'GYN') {
+        $max_count = 1000;
+    } else if($referral_code == 'PRAYAG') {
+        $max_count = 1000;
+    } else if($referral_code == 'SHUBHRA') {
+        $max_count = 1000;
+    } else if($referral_code == 'LAKSHITA') {
+        $max_count = 1000;
+    } else if($referral_code == 'ASHU') {
+        $max_count = 1000;
+    } else if($referral_code == 'NEHA') {
+        $max_count = 1000;
+    } else if($referral_code == 'SACHIN') {
+        $max_count = 1000;
+    } else if($referral_code == 'VARNIK') {
+        $max_count = 1000;
+    } else if($referral_code == 'SIMS') {
+        $max_count = 1000;
+    } else if($referral_code == 'OPHTH') {
+        $max_count = 1000;
+    } else if($referral_code == 'MED1') {
+        $max_count = 1000;
+    } else if($referral_code == 'MED2') {
+        $max_count = 1000;
+    } else if($referral_code == 'MED3') {
+        $max_count = 1000;
+    } else if($referral_code == 'PATH') {
+        $max_count = 1000;
+    } else if($referral_code == 'GMC') {
+        $max_count = 1000;
+    } else if($referral_code == 'MZN') {
+        $max_count = 1000;
     }
 
     if($count > $max_count) {

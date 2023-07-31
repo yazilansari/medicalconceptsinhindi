@@ -292,7 +292,7 @@ class Mdl_sub_category extends MY_Model {
 
 			$data['upload_for_user_type'] = !empty($this->input->post('upload_for_user_type'))?$this->input->post('upload_for_user_type'):NULL;
 
-			$last_sort_order = $this->model->get_records(['category_id'=>$category_id],'mch_sub_categories',[],'sort_order desc',1);
+			$last_sort_order = $this->model->get_records(['category_id'=>$category_id],'sub_category',[],'sort_order desc',1);
 
 			if(!empty($last_sort_order)){
 				$sort_order = $last_sort_order[0]->sort_order;
@@ -382,7 +382,7 @@ class Mdl_sub_category extends MY_Model {
 
 			$data['video_url'] = !empty($this->input->post('video_url'))?$this->input->post('video_url'):NULL;
 
-			$last_sort_order = $this->model->get_records(['category_id'=>$category_id],'sub_category',[],'sort_order desc',1);
+			$last_sort_order = $this->model->get_records(['category_id'=>$category_id],'mch_sub_categories',[],'sort_order desc',1);
 
 			if(!empty($last_sort_order)){
 				$sort_order = $last_sort_order[0]->sort_order;

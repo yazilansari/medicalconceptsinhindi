@@ -106,7 +106,7 @@ class Posts extends Generic_Controller
 
 
 	function lists(){
-//var_dump($_POST);exit;
+		//var_dump($_POST);exit;
 		if( ! $this->session->is_logged_in()){
 			redirect('admin/login','refresh');
 		}
@@ -182,6 +182,83 @@ class Posts extends Generic_Controller
 		}
 	}
 
+	function lists_new(){
+		//var_dump($_POST);exit;
+		if( ! $this->session->is_logged_in()){
+			redirect('admin/login','refresh');
+		}
+
+		$sfilters = array();
+
+		$page = $this->input->post('page');
+        $offset = (!$page) ? 0 : intval($page);
+		
+		// $array = $this->uri->uri_to_assoc();
+		// $id = (array_key_exists('id', $array)) ? (int) $array['id'] : 0;
+		// if($id != 0){
+		// 	$sfilters["sc.sub_category_id"] = $id ;
+		// }
+		// if($this->input->get('all') == 'all_results'){
+		// 	$this->session->unset_userdata('category_id');
+		// 	$this->session->unset_userdata('sub_category_id');
+
+		// }else{
+		// //var_dump($_SESSION);exit;
+
+		// 	if(isset($_SESSION["category_id"])){
+		// 			//$this->session->setuserdata('category_id');
+
+		// 			$sfilters['ud.category_id'] = $_SESSION['category_id'];
+		// 	}
+		// 	if(isset($_SESSION['sub_category_id'])){
+		// 		   $sfilters['ud.sub_category_id'] = $_SESSION['sub_category_id'];
+		// 	}
+		// 	//	$this->session->unset_userdata($_SESSION['category_id']);
+			
+		// 	//	$this->session->unset_userdata($_SESSION['sub_category_id']);
+			
+		// }
+		//var_dump($sfilters);exit;
+
+		$keywords = !empty($this->input->post('keywords'))?$this->input->post('keywords'):'';
+
+		if (!empty($keywords)) {
+			
+			$this->data['collection'] = $this->model->get_collections_new($sfilters, $keywords, $this->perPage);
+			
+		} else {
+			
+			$this->data['collection'] = $this->model->get_collections_new($sfilters, $keywords, $this->perPage, $page);
+		}
+		/*if( isset($_SESSION['category_id']) && !empty($_SESSION['sub_category_id'])){
+
+			$this->data['sort_collection'] = $this->model->get_collection($sfilters, $keywords, $this->perPage, $page);
+		}*/
+
+		$totalRec = count($this->model->get_collections_new($sfilters, $keywords));
+		$this->paginate($this->data['controller'], $totalRec);
+
+        $this->data['csv_fields'] = $this->csv_fields;
+		$this->data['plugins'] = ['paginate','fancybox','select2'];
+		
+		$this->data['listing_url'] = $this->data['controller'] . '/lists_new';
+		$this->data['download_url'] = $this->data['controller'] . '/download_new';
+		$this->data['searching_url'] = $this->data['controller'] . '/search_new';
+
+        $title_txt = 'Manage '. ucfirst($this->module);
+        $this->data['js'] = ['readmore.js','generic-add.js', 'searchpost.js'];
+
+        if ($this->input->post('search') == 1) {
+        	$this->load->view($this->data['controller'].'/results_new', $this->data);
+        }else
+        {
+        	/*$this->session->unset_userdata('category_id');
+			$this->session->unset_userdata('sub_category_id');*/
+			
+			$this->set_view($this->data, 'lists_new',  '_admin', $title_txt);
+		}
+	}
+
 	function filter(){
 		if( ! $this->session->is_logged_in() )
 			redirect('admin/login','refresh');
@@ -206,6 +283,18 @@ class Posts extends Generic_Controller
 		$this->set_view($this->data, 'add', '_admin', $title_txt);
 	}
 
+	function add_new(){
+		if( ! $this->session->is_logged_in() )
+			redirect('admin/login','refresh');
+
+		$this->data['plugins'] = ['select2','medium-editor'];
+		$this->data['js'] = ['generic-add.js', 'posts.js'];
+
+		$title_txt = 'Add '. ucfirst($this->module).' New';
+
+		$this->set_view($this->data, 'add_new', '_admin', $title_txt);
+	}
+
 	function edit(){
 		if( ! $this->session->is_logged_in() )
 			redirect('admin/login','refresh');
@@ -215,15 +304,35 @@ class Posts extends Generic_Controller
 
 		$this->data[$key] = $id = (array_key_exists('record', $array)) ? (int) $array['record'] : 0;
 		
-		$this->data['info'] = $this->model->get_collection([ "ud.upload_data_id" => $id ]);
+		$this->data['info'] = $this->model->get_collections_new([ "ud.upload_data_id" => $id ]);
 		//echo "<pre>";print_r($this->data);echo "</pre>";exit;
 		if(! count($this->data['info']) ){ show_404(); }
 
 		$this->data['plugins'] = ['select2','medium-editor'];
 		$this->data['js']	= ['generic-edit.js', 'posts.js'];
 
-		$title_txt = 'Edit '. ucfirst($this->module);
-		$this->set_view($this->data, 'edit', '_admin',$title_txt);
+		$title_txt = 'Edit '. ucfirst($this->module).' New';
+		$this->set_view($this->data, 'edit_new', '_admin',$title_txt);
+	}
+
+	function edit_new(){
+		if( ! $this->session->is_logged_in() )
+			redirect('admin/login','refresh');
+
+		$array = $this->uri->uri_to_assoc();
+		$key = $this->model->p_key;
+
+		$this->data[$key] = $id = (array_key_exists('record', $array)) ? (int) $array['record'] : 0;
+		
+		$this->data['info'] = $this->model->get_collections_new([ "ud.upload_data_id" => $id ]);
+		//echo "<pre>";print_r($this->data);echo "</pre>";exit;
+		if(! count($this->data['info']) ){ show_404(); }
+
+		$this->data['plugins'] = ['select2','medium-editor'];
+		$this->data['js']	= ['generic-edit.js', 'posts.js'];
+
+		$title_txt = 'Edit '. ucfirst($this->module).' New';
+		$this->set_view($this->data, 'edit_new', '_admin',$title_txt);
 	}
 
 	function save(){
@@ -239,6 +348,19 @@ class Posts extends Generic_Controller
 		echo json_encode($result);
 	}
 
+	function save_new(){
+		$this->session->is_Ajax_and_logged_in();
+
+		if(isset($_SESSION["category_id"])){
+					$this->session->unset_userdata('category_id');
+			}
+			if(isset($_SESSION["category_id"])){
+					$this->session->unset_userdata('sub_category_id');
+			}
+		$result = $this->model->save_new();
+		echo json_encode($result);
+	}
+
 	function modify(){
 		$this->session->is_Ajax_and_logged_in();
 
@@ -246,10 +368,24 @@ class Posts extends Generic_Controller
 		echo json_encode($result);
 	}
 
+	function modify_new(){
+		$this->session->is_Ajax_and_logged_in();
+
+		$result = $this->model->modify_new();
+		echo json_encode($result);
+	}
+
 	function remove(){
 		$this->session->is_Ajax_and_logged_in();
 
 		$response = $this->model->remove();
+		echo json_encode($response);
+	}
+
+	function remove_new(){
+		$this->session->is_Ajax_and_logged_in();
+
+		$response = $this->model->remove_new();
 		echo json_encode($response);
 	}
 
@@ -266,7 +402,18 @@ class Posts extends Generic_Controller
 		$this->download_file($this->data['controller'] . '-' . date('Y-m-d'), $fields);
 	}
 
+	function download_new(){
 
+		if( ! $this->session->is_logged_in() )
+			redirect('admin/login','refresh');
+
+		$keywords = (isset($_GET['keywords'])) ? $_GET['keywords'] : '';
+
+		$data = $this->model->get_collections_new([], $keywords);
+		$fields = $this->model->_format_data_to_export_new($data);
+
+		$this->download_file($this->data['controller'] . '-' . date('Y-m-d'), $fields);
+	}
 
 	function uploadcsv(){
 		$this->session->is_Ajax_and_logged_in();

@@ -72,16 +72,22 @@
                     <span>Sub Category New</span>
                     </a>
                 </li>
-                <li <?php echo ($this->uri->uri_string() == 'subcategory/lists_image') ? 'active' : '';?>>
+                <li class="<?php echo ($this->uri->uri_string() == 'subcategory/lists_image') ? 'active' : '';?>">
                     <a href="<?php echo base_url("subcategory/lists_image?t=$timestamp") ?>">
                     <i class="material-icons">collections</i>
                     <span>Sub Category Images</span>
                     </a>
                 </li>
-                <li <?php echo ($mainmenu == 'posts') ? 'class="active"': ''; ?>>
+                <li class="<?php echo ($this->uri->uri_string() == 'posts/lists') ? 'active' : '';?>">
                     <a href="<?php echo base_url("posts/lists?all=all_results") ?>">
                     <i class="material-icons">comment</i>
                     <span>Posts</span>
+                    </a>
+                </li>
+                <li class="<?php echo ($this->uri->uri_string() == 'posts/lists_new') ? 'active' : '';?>">
+                    <a href="<?php echo base_url("posts/lists_new?all=all_results") ?>">
+                    <i class="material-icons">comment</i>
+                    <span>Posts New</span>
                     </a>
                 </li>
                 <li class="<?php echo ($this->uri->uri_string() == 'contributors/lists') ? 'active' : '';?>">
