@@ -6,7 +6,7 @@ class Mdl_posts extends MY_Model
 	public $table = 'upload_data';
 
 	public $p_key_new = 'id';
-	public $table_new = 'posts';
+	public $table_new = 'mch_posts';
 
 	function __construct()
 	{
@@ -646,7 +646,7 @@ class Mdl_posts extends MY_Model
 
 			$data['sub_category_id'] = $sub_category_id =  !empty($this->input->post('sub_category_id')) ? $this->input->post('sub_category_id') : NULL;
 
-			$data['event_date'] = !empty($this->input->post('eventdate')) ? $this->input->post('eventdate') : "0000-00-00";
+			$data['date'] = !empty($this->input->post('eventdate')) ? date('Y-m-d', strtotime($this->input->post('eventdate'))) : "0000-00-00";
 
 			// $data['event_time'] = !empty($this->input->post('eventtime')) ? $this->input->post('eventtime') : "00:00:00";
 
@@ -678,7 +678,7 @@ class Mdl_posts extends MY_Model
 			// }
 
 			// $data['tags'] = !empty($this->input->post('tags')) ? $this->input->post('tags') : NULL;
-
+			$data['created_at'] = date('Y-m-d H:i:s');
 
 			$sort_last_record = $this->model->get_records(['category_id' => $category_id, 'sub_category_id' => $sub_category_id], 'mch_posts', [], 'sort_order desc', 1);
 			//print_r($sort_last_record);exit;
@@ -824,7 +824,7 @@ class Mdl_posts extends MY_Model
 			// 	}
 			// }
 
-			if ($upload_data_id != "" && $_POST['upload_type'] != 'video') {
+			// if ($upload_data_id != "" && $_POST['upload_type'] != 'video') {
 
 				$thumbnailpath = $this->config->item("s3_posts_thumbnail_upload_path") . $sub_category_id . '/';
 				$image_upload = upload_media('thumbnail', $thumbnailpath, false, $thumbnailpath, ['gif', 'jpeg', 'jpg', 'jpe', 'png', 'tiff', 'tif'], 300000);
@@ -857,7 +857,7 @@ class Mdl_posts extends MY_Model
 					$update_image = $this->_update(['upload_data_id' => $upload_data_id],
 						['thumbnail' => $image_name], 'upload_data');
 				}*/
-			}
+			// }
 			// else if ($upload_data_id != "" && $_POST['upload_type'] == 'video' && $_POST['video_type'] == 'inhouse') {
 
 			// 	$thumbnailpath = $this->config->item("s3_posts_thumbnail_upload_path") . $sub_category_id . '/';
@@ -888,6 +888,7 @@ class Mdl_posts extends MY_Model
 			// }
 
 			$response['status'] = ((int) ($upload_data_id)) ? TRUE : FALSE;
+			$response['redirect'] = 'lists_new';
 
 			// $this->format_post_data($upload_data_id);
 		}
@@ -1271,6 +1272,44 @@ class Mdl_posts extends MY_Model
 				$response = $this->_update_with($this->p_key, $ids, array(), $data, $this->table);
 
 				$meta_response = $this->_update_with('meta_upload_data_id', $ids, array(), $data, 'meta_tag_details');
+
+				//$affected_rows = $this->db->affected_rows();
+				$msg = ($response) ? "Record(s) Successfully deleted" : 'Error while deleting record(s)';
+			} else {
+				$msg = "Post(s) can not be deleted!!";
+			}
+
+			return ['msg' => $msg];
+		}
+
+		return ['msg' => 'No Records Selected'];
+	}
+
+	function remove_new()
+	{
+
+		if (isset($_POST['ids']) && sizeof($_POST['ids']) > 0) {
+			$ids = $this->input->post('ids');
+
+			$ids1 = implode(",", $ids);
+			if (!empty($ids1)) {
+				// for ($i = 0; $i < count($ids); $i++) {
+				// 	$one_record = $this->model->get_records(['id' => $ids[$i]], 'mch_posts');
+				// 	$one_record_sort_order = $one_record[0]->sort_order;
+				// 	$all_records = $this->model->get_records(['category_id' => $one_record[0]->category_id, 'sub_category_id' => $one_record[0]->sub_category_id], 'mch_posts');
+				// 	foreach ($all_records as $record) {
+				// 		if ($one_record_sort_order < $record->sort_order) {
+				// 			$this->db->set('sort_order', 'sort_order-1', FALSE);
+				// 			$this->db->where('upload_data_id', $record->upload_data_id);
+				// 			$this->db->update('upload_data');
+				// 		}
+				// 	}
+				// }
+				$data['is_active'] = 0;
+
+				$response = $this->_update_with($this->p_key_new, $ids, array(), $data, $this->table_new);
+
+				// $meta_response = $this->_update_with('meta_upload_data_id', $ids, array(), $data, 'meta_tag_details');
 
 				//$affected_rows = $this->db->affected_rows();
 				$msg = ($response) ? "Record(s) Successfully deleted" : 'Error while deleting record(s)';

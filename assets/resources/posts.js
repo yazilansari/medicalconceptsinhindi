@@ -17,7 +17,8 @@
 	$('[name=tags]').tagify();
 	$('[name=meta_keyword]').tagify();
 
-	if(check_upload_types_data!='undefined'){
+	if(check_upload_types_data!=undefined){
+		// alert(check_upload_types_data);
 		if(check_upload_types_data=='audio'){$("#description_div").slideUp();$("#upload_div").slideDown();}
 		if(check_upload_types_data=='video'){
 
@@ -39,18 +40,23 @@
 		// if(check_upload_types_data=='pdf'){$("#description_div").slideUp();$("#upload_div").slideDown();}
 		if(check_upload_types_data=='text'){$("#upload_div").slideUp();$("#description_div").slideDown();}	
 		if(check_upload_types_data=='image'){$("#description_div").slideUp();$("#upload_div").slideDown();}		
+	} else {
+		// alert();
+		$("#description_div").hide();
+		$("#upload_div").hide();
+		$("#div_youtube_video").hide();
 	}
 
 	$(document).on("change", "input[name=upload_type]", function(){
 
 		var upload_type = $("input[name=upload_type]:checked").val();
 
-		if(upload_type=='audio'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_video_type").slideUp();}
-		if(upload_type=='video'){$("#description_div").slideUp();$("#upload_div").slideUp();$("#div_video_type").slideDown();}
-		if(upload_type=='ppt'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_video_type").slideUp();}
-		if(upload_type=='pdf'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_video_type").slideUp();}
-		if(upload_type=='text'){$("#upload_div").slideUp();$("#description_div").slideDown();$("#div_video_type").slideUp();}	
-		if(upload_type=='image'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_video_type").slideUp();}
+		if(upload_type=='audio'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_youtube_video").slideUp();}
+		if(upload_type=='video'){$("#description_div").slideUp();$("#upload_div").slideUp();$("#div_youtube_video").slideDown();}
+		if(upload_type=='ppt'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_youtube_video").slideUp();}
+		if(upload_type=='pdf'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_youtube_video").slideUp();}
+		if(upload_type=='text'){$("#upload_div").slideUp();$("#description_div").slideDown();$("#div_youtube_video").slideUp();}	
+		if(upload_type=='image'){$("#description_div").slideUp();$("#upload_div").slideDown();$("#div_youtube_video").slideUp();}
 	});
 
 	$(document).on("change", "input[name=video_type]", function(){
@@ -81,7 +87,7 @@
 			placeholder: "Select "+ placeholder_txt,
 		    allowClear: true,
 		    ajax: {
-			    url: baseUrl + controller + '/options',
+			    url: baseUrl + controller + '/options_new',
 			    dataType: 'json',
 			    type: 'POST',
 			    data: function (params) {

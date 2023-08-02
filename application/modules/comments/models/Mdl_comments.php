@@ -59,7 +59,8 @@ class Mdl_comments extends MY_Model {
 
     	$q = $this->db->select('c.*, sc.id AS sub_category_id, sc.name AS sub_category_name, ca.id AS category_id, ca.name AS category_name')
 		->from('mch_comments c')
-		->join('mch_sub_categories sc','c.sub_category_id = sc.id')
+		->join('mch_posts p','p.id = c.post_id')
+		->join('mch_sub_categories sc','p.sub_category_id = sc.id')
 		->join('mch_categories ca','sc.category_id = ca.id');
 		
 		if(sizeof($f_filters)) { 

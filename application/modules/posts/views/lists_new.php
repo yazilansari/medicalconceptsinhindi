@@ -67,7 +67,7 @@
 <!-- </div>
 </div> -->
 			<div class="body table-responsive" style="overflow-y:scroll; height: 700px;">
-				<?php echo form_open("$controller/remove",array('id'=>'frm_delete', 'name'=>'frm_delete')); ?>
+				<?php echo form_open("$controller/remove_new",array('id'=>'frm_delete', 'name'=>'frm_delete')); ?>
 
 					<div class="form-group">
                     	<div class="form-line">
@@ -83,7 +83,7 @@
 									<label for="checkall" style="margin:0; vertical-align:bottom"></label>
 								</th>
 								
-								<?php foreach ($columns as $headers) { ?>
+								<?php foreach ($columns_posts as $headers) { ?>
 								<th class="font-bold"><?= $headers ?></th>
 								<?php } ?>
 								

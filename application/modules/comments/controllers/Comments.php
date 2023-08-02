@@ -204,11 +204,12 @@ class Comments extends Generic_Controller
 	function view_on_new(){
 
 		$array = $this->uri->uri_to_assoc();
-		
+		// print_r($array);die();
 		$link_key = $id = (array_key_exists('record', $array)) ? (int) $array['record'] : 0;
-		//echo $link_key;exit;
+		// echo $link_key;exit;
 		$this->data['post_id'] = $link_key;
-		$title_txt = 'Manage '. ucfirst($this->module);
+		$this->data['flag'] = 'post_new';
+		$title_txt = 'Manage '. ucfirst($this->module).' New';
 		$this->data['listing_url'] = $this->data['controller'] . '/comments_list_ajax_new';
 		$this->data['download_url'] = $this->data['controller'] . '/download_new';
 		$this->data['plugins'] = ['comment_paginate'];
@@ -273,10 +274,10 @@ class Comments extends Generic_Controller
 		$page = $this->input->post('page');
         $offset = (!$page) ? 0 : intval($page);
 
-        $upload_data_id = !empty($this->input->post('post_id'))?$this->input->post('post_id'):''; 
+        $post_id = !empty($this->input->post('post_id'))?$this->input->post('post_id'):''; 
 		$keywords = !empty($this->input->post('keywords'))?$this->input->post('keywords'):'';
 
-		$sfilters['c.upload_data_id'] = $upload_data_id;
+		$sfilters['c.post_id'] = $post_id;
 
 		if (!empty($keywords)) {
 			$this->data['collection'] = $this->model->get_collections_new($sfilters, $keywords, $this->perPage, '', $key_filters);
@@ -293,7 +294,7 @@ class Comments extends Generic_Controller
 		$this->data['listing_url'] = $this->data['controller'] . '/comments_list_ajax_new';
 		$this->data['download_url'] = $this->data['controller'] . '/download_new';
 
-        $title_txt = 'Manage '. ucfirst($this->module);
+        $title_txt = 'Manage '. ucfirst($this->module).' New';
 
         if ($this->input->post('search') == TRUE) {
         	$this->load->view($this->data['controller'].'/comment_results_new', $this->data);

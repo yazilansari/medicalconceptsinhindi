@@ -14,7 +14,8 @@
 					</li>
 				</ul> -->
 			</div>
-			<input type="hidden" id="post_id" value="<?php if($post_id!=''){echo $post_id;}?>">			
+			<input type="hidden" id="post_id" value="<?php if($post_id!=''){echo $post_id;}?>">
+			<input type="hidden" id="flag" value="<?php if($flag!=''){echo $flag;}?>">
 			<div id="comments_list_ajax"></div>
 		</div>
 	</div>

@@ -35,7 +35,7 @@
                         </select>
                     </div>
                 </div>
-                <label for="eventdate" class="eventdate">Event Date<span class="required">*</span></label>
+                <label for="eventdate" class="eventdate">Date<span class="required">*</span></label>
                 <div class="form-group">
                     <input type="date" class="form-control eventdate" id="eventdate" name="eventdate" required>
                 </div>
@@ -118,7 +118,7 @@
                     <label for="image">Image</label>
                     <!-- <input name="upload_type" class="upload_types" type="radio" id="audio" value="audio">
                     <label for="audio">Audio</label> -->
-                    <input name="upload_type" class="upload_types" type="radio" id="video" value="video" required>
+                    <input name="upload_type" class="upload_types" type="radio" id="video" value="video">
                     <label for="video">Video</label>
                     <!-- <input name="upload_type" class="upload_types" type="radio" id="pdf" value="pdf">
                     <label for="pdf">PDF</label> -->
@@ -197,16 +197,16 @@
 <script type="text/javascript">
     var type='add';
     $(document).ready(function(){
-        $('#sub_category_id').change(function(){
-            var category= $('#category_id :selected').text();
-            var sub_category= $('#sub_category_id :selected').text();
+        // $('#sub_category_id').change(function(){
+        //     var category= $('#category_id :selected').text();
+        //     var sub_category= $('#sub_category_id :selected').text();
             
-            if((category == 'Online event diary') && (sub_category == 'Upcoming events')){
-                $('label.eventdate,#eventdate,label.eventtime,#eventtime').show();
-            }else{
-                $('label.eventdate,#eventdate,label.eventtime,#eventtime').hide();
-            }
-        });
+        //     if((category == 'Online event diary') && (sub_category == 'Upcoming events')){
+        //         $('label.eventdate,#eventdate,label.eventtime,#eventtime').show();
+        //     }else{
+        //         $('label.eventdate,#eventdate,label.eventtime,#eventtime').hide();
+        //     }
+        // });
     });
 </script>
 

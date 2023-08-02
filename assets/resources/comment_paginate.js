@@ -2,6 +2,8 @@
     //var controller = $('.custom-table').attr('id');
     var keywords = $("input[name=keywords]");
     var post_id = $("#post_id").val();
+    var flag = $("#flag").val();
+    // alert(flag)
     var data = {};
 
     if(post_id){
@@ -45,8 +47,10 @@
         data.page = pagecount;
         data.post_id = post_id;
         grid_keywords = data.keywords;
-        
         var url = baseUrl + controller + '/comments_list_ajax';
+        if(flag == 'post_new') {
+            url = baseUrl + controller + '/comments_list_ajax_new';
+        }
         $.post(url + '/' + count , data , function(data){     
             $("#comments_list_ajax").html(data);
         });

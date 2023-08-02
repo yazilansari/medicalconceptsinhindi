@@ -14,6 +14,7 @@ class Posts extends Generic_Controller
 		$this->data['mainmenu'] = 'posts';
 		$this->data['controller'] = $this->data['menu'] = $this->data['m_title'] = $this->module;
 		$this->data['columns'] = ['Posts Title','Category','Sub Category','Total Comments','Short Description','User Type','Upload Type','Upload Description','Upload File','Upload Tags'/*,'Sort Order','Meta Title','Meta Description','Meta Keyword'*/,'Meta Post Url'/*,'Meta Slug'*/,'Added Datetime'];
+		$this->data['columns_posts'] = ['Posts Title','Category','Sub Category','Total Comments', 'Upload Type', 'Added Datetime'];
 		$this->csv_fields = ['Category Name'];
 		
 	}
