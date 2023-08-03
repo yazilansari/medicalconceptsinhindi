@@ -21,11 +21,11 @@
                 <h2><?= $pg_title ?></h2>
             </div>
             <div class="body">
-                <?php echo form_open("$controller/modify", array('id' => 'save-form')); ?>
+                <?php echo form_open("$controller/modify_new", array('id' => 'save-form')); ?>
 
-                <input type="hidden" name="upload_data_id" value="<?php echo $info[0]->upload_data_id ?>">
+                <input type="hidden" name="id" value="<?php echo $info[0]->id ?>">
 
-                <label for="main_category_id">Main Category Name<span class="required">*</span></label>
+                <!-- <label for="main_category_id">Main Category Name<span class="required">*</span></label>
                 <div class="form-group">
                     <div class="form-line">
                         <select name="main_category_id" class="form-control" data-placeholder="Select Main Category" id="main_category_id">
@@ -35,10 +35,10 @@
                             <?php } ?>
                         </select>
                     </div>
-                </div>
+                </div> -->
 
 
-                <label for="category_id">Category Name</label>
+               <!--  <label for="category_id">Category Name</label>
                 <div class="form-group">
                     <div class="form-line">
                         <select name="category_id" class="form-control" data-placeholder="Select Category" id="category_id" readonly="readonly">
@@ -48,8 +48,9 @@
                             <?php } ?>
                         </select>
                     </div>
-                </div>
-                <label for="sub_category_id">Sub Category Name</label>
+                </div> -->
+
+                <!-- <label for="sub_category_id">Sub Category Name</label>
                 <div class="form-group">
                     <div class="form-line">
                         <select name="sub_category_id" class="form-control" data-placeholder="Select Sub Category" id="sub_category_id" readonly="readonly">
@@ -59,17 +60,17 @@
                             <?php } ?>
                         </select>
                     </div>
-                </div>
+                </div> -->
 
-                <?php if (($info[0]->event_date > "0000:00:00") && ($info[0]->event_time > "00:00:00")) : ?>
+                <?php if (($info[0]->date > "0000:00:00")) : ?>
                     <label for="eventdate" class="eventdate">Event Date<span class="required">*</span></label>
                     <div class="form-group">
                         <input type="date" class="form-control eventdate" id="eventdate" name="eventdate" value="<?php if (!empty($info)) {
-                                                                                                                        echo $info[0]->event_date;
+                                                                                                                        echo $info[0]->date;
                                                                                                                     } ?>">
                     </div>
 
-                    <label for="eventtime" class="eventtime">Event Time<span class="required">*</span></label>
+                    <!-- <label for="eventtime" class="eventtime">Event Time<span class="required">*</span></label>
                     <div class="form-group">
                         <input type="time" class="form-control eventtime" id="eventtime" name="eventtime" value="<?php if (!empty($info)) {
                                                                                                                         echo $info[0]->event_time;
@@ -83,16 +84,16 @@
                                                                                                                             echo $info[0]->event_link;
                                                                                                                         } ?>">
                         </div>
-                    </div>
+                    </div> -->
                 <?php endif; ?>
 
-                <label for="contributors_id">Contributors</label>
+                <label for="contributors_id">Contributor<span class="required">*</span></label>
                 <div class="form-group">
                     <div class="form-line">
                         <select name="contributors_id" class="form-control" data-placeholder="Select Contributor" id="contributors_id">
                             <option></option>
-                            <?php if ($info[0]->contributors_id != "") { ?>
-                                <option value="<?php echo $info[0]->contributors_id ?>" selected="selected"><?php echo $info[0]->contributors_name; ?></option>
+                            <?php if ($info[0]->contributor_id != "") { ?>
+                                <option value="<?php echo $info[0]->contributor_id ?>" selected="selected"><?php echo $info[0]->contributor_name; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -101,27 +102,27 @@
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="upload_title" name="upload_title" class="form-control" autocomplete="off" maxlength="250" value="<?php if (!empty($info)) {
-                                                                                                                                                    echo $info[0]->upload_title;
+                                                                                                                                                    echo $info[0]->title;
                                                                                                                                                 } ?>">
                     </div>
                 </div>
-                <label class="form-label">Meta Title <span class="required">*</span></label>
+                <!-- <label class="form-label">Meta Title <span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="meta_title" name="meta_title" class="form-control" autocomplete="off" value="<?php if (!empty($info)) {
                                                                                                                                 echo $info[0]->meta_title;
                                                                                                                             } ?>">
                     </div>
-                </div>
-                <label class="form-label">Meta Description <span class="required">*</span></label>
+                </div> -->
+               <!--  <label class="form-label">Meta Description <span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="meta_description" name="meta_description" class="form-control" autocomplete="off" value="<?php if (!empty($info)) {
                                                                                                                                             echo $info[0]->meta_description;
                                                                                                                                         } ?>">
                     </div>
-                </div>
-                <label class="form-label">Meta Keywords </label>
+                </div> -->
+                <!-- <label class="form-label">Meta Keywords </label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="meta_keyword" name="meta_keyword" class="form-control" autocomplete="off" value="<?php if (!empty($info)) {
@@ -144,16 +145,16 @@
                                                                                                                                 echo $info[0]->meta_slug;
                                                                                                                             } ?>">
                     </div>
-                </div>
-                <label class="form-label">Short Description<span class="required">*</span></label>
+                </div> -->
+               <!--  <label class="form-label">Short Description<span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
                         <textarea type="text" rows="5" class="form-control" id="short_description" name="short_description"><?php if (!empty($info)) {
                                                                                                                                 echo $info[0]->short_description;
                                                                                                                             } ?> </textarea>
                     </div>
-                </div>
-                <label for="upload_for_user_type">Upload Data for User Type<span class="required">*</span></label>
+                </div> -->
+                <!-- <label for="upload_for_user_type">Upload Data for User Type<span class="required">*</span></label>
                 <div class="demo-radio-button">
                     <input name="upload_for_user_type" type="radio" id="radio_1" value="General" <?php if ($info[0]->upload_for_user_type == 'General') {
                                                                                                         echo "checked='checked'";
@@ -167,34 +168,38 @@
                                                                                                     echo "checked='checked'";
                                                                                                 } ?>>
                     <label for="radio_3">Both</label>
-                </div>
-                <br>
-                <label for="upload_type">Upload Type <span class="required">*</span></label>
+                </div> -->
+                <!-- <br> -->
+                <label for="upload_type">Upload Type </label>
                 <div class="demo-radio-button">
-                    <input name="upload_type" class="upload_types" type="radio" id="image" value="image" <?php if ($info[0]->upload_type == 'image') {
+                    <?php if ($info[0]->type == 'image') { ?>
+                    <input name="upload_type" class="upload_types" type="radio" id="image" value="image" <?php if ($info[0]->type == 'image') {
                                                                                                                 echo "checked='checked'";
                                                                                                             } ?>>
                     <label for="image">Image</label>
-                    <input name="upload_type" class="upload_types" type="radio" id="audio" value="audio" <?php if ($info[0]->upload_type == 'audio') {
+                    <?php } elseif($info[0]->type == 'video') { ?>
+                    <!-- <input name="upload_type" class="upload_types" type="radio" id="audio" value="audio" <?php if ($info[0]->upload_type == 'audio') {
                                                                                                                 echo "checked='checked'";
                                                                                                             } ?>>
-                    <label for="audio">Audio</label>
-                    <input name="upload_type" class="upload_types" type="radio" id="video" value="video" <?php if ($info[0]->upload_type == 'video') {
+                    <label for="audio">Audio</label> -->
+                    <input name="upload_type" class="upload_types" type="radio" id="video" value="video" <?php if ($info[0]->type == 'video') {
                                                                                                                 echo "checked='checked'";
                                                                                                             } ?>>
                     <label for="video">Video</label>
-                    <input name="upload_type" class="upload_types" type="radio" id="pdf" value="pdf" <?php if ($info[0]->upload_type == 'pdf') {
+                    <?php }  elseif($info[0]->type == 'text') { ?>
+                    <!-- <input name="upload_type" class="upload_types" type="radio" id="pdf" value="pdf" <?php if ($info[0]->upload_type == 'pdf') {
                                                                                                             echo "checked='checked'";
                                                                                                         } ?>>
-                    <label for="pdf">PDF</label>
-                    <input name="upload_type" class="upload_types" type="radio" id="text" value="text" <?php if ($info[0]->upload_type == 'text') {
+                    <label for="pdf">PDF</label> -->
+                    <input name="upload_type" class="upload_types" type="radio" id="text" value="text" <?php if ($info[0]->type == 'text') {
                                                                                                             echo "checked='checked'";
                                                                                                         } ?>>
                     <label for="text">Text</label>
+                    <?php } ?>
                 </div>
                 <br>
 
-                <div id='div_video_type'>
+                <!-- <div id='div_video_type'>
                     <label for="video_type">Video Type<span class="required">*</span></label>
                     <div class="demo-radio-button">
                         <input name="video_type" type="radio" id="radio_71" value="inhouse" <?php if ($info[0]->video_type == 'inhouse') {
@@ -206,14 +211,14 @@
                                                                                             } ?>>
                         <label for="radio_72">YouTube Video</label>
                     </div><br>
-                </div>
+                </div> -->
 
-                <div id='div_youtube_video' style="display: none;">
+                <div id='div_youtube_video'>
                     <label class="form-label">YouTube Video ID <span class="required">*</span></label>
                     <div class="input-group">
                         <div class="form-line">
                             <input type="text" id="youtube_video_code" name="youtube_video_code" class="form-control" value="<?php if (!empty($info)) {
-                                                                                                                                    echo $info[0]->youtube_video_id;
+                                                                                                                                    echo $info[0]->video_url;
                                                                                                                                 } ?>">
                         </div>
                     </div>
@@ -225,7 +230,7 @@
                         <div class="form-line">
                             <textarea class="form-control" id="upload_description" name="upload_description">
                                 <?php if (!empty($info)) {
-                                    echo str_replace('\r\n', '', $info[0]->upload_description);
+                                    echo str_replace('\r\n', '', $info[0]->description);
                                 } ?></textarea>
                             <span name="desc_errors" id="desc_errors"></span>
                         </div>
@@ -233,34 +238,34 @@
                 </div>
 
                 <div id="upload_div">
-                    <label class="form-label">Upload File<span class="required">*</span></label>
+                    <label class="form-label">Upload File</label>
                     <div class="input-group">
                         <div class="form-line">
                             <input type="file" id="upload_path" name="upload_path" class="form-control">
                             <input type="hidden" name="upload_path_name" value="<?php if (!empty($info)) {
-                                                                                    echo $info[0]->upload_path;
+                                                                                    echo $info[0]->image;
                                                                                 } ?>">
                         </div>
                         <span><?php if (!empty($info)) {
-                                    echo $info[0]->upload_path;
+                                    echo $info[0]->image;
                                 } ?></span>
                     </div>
                 </div>
 
-                <label class="form-label">Thumbnail File<span class="required">*</span></label>
+                <label class="form-label">Thumbnail File</label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="file" id="thumbnail" name="thumbnail" class="form-control">
                         <input type="hidden" name="thumbnail_name" value="<?php if (!empty($info)) {
-                                                                                echo $info[0]->upload_path;
+                                                                                echo $info[0]->thumbnail_image;
                                                                             } ?>">
                     </div>
                     <span><?php if (!empty($info)) {
-                                echo $info[0]->thumbnail;
+                                echo $info[0]->thumbnail_image;
                             } ?></span>
                 </div>
 
-                <label class="form-label">Upload Tags <span class="required">*</span></label>
+                <!-- <label class="form-label">Upload Tags <span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="tags" name="tags" class="form-control" value="<?php if (!empty($info)) {
@@ -268,7 +273,7 @@
                                                                                                 } ?>">
                         <span name="error_tags" id="error_tags"></span>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- <label class="form-label">Sort Sequence Number <span class="required">*</span></label>
                 <div class="input-group">
@@ -280,7 +285,7 @@
                 </div>
  -->
                 <input type="submit" class="btn btn-primary m-t-15 waves-effect" value="Save" />
-                <a href="<?php echo base_url("$controller/lists?c=$timestamp") ?>" class="btn btn-danger m-t-15 waves-effect">Cancel</a>
+                <a href="<?php echo base_url("$controller/lists_new?c=$timestamp") ?>" class="btn btn-danger m-t-15 waves-effect">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
         </div>

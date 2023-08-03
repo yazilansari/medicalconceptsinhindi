@@ -130,10 +130,16 @@
                             <a href="<?php echo base_url("reports/view/type/registered") ?>">Users Registered Reports</a>
                         </li>
                         <li>
+                            <a href="<?php echo base_url("reports/view/type/registered_new") ?>">New User Registered Reports</a>
+                        </li>
+                        <li>
                             <a href="<?php echo base_url("reports/view/type/viewed") ?>">Users Posts Viewed Reports</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url("reports/view/type/contact") ?>">Contact Us Reports</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url("reports/view/type/contact_new") ?>">New Contact Us Reports</a>
                         </li>
                     </ul>
                 </li>

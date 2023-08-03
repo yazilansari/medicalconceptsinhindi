@@ -10,7 +10,7 @@ class Reports extends Generic_Controller
 		$this->load->library('user_agent');
 		$this->load->model('mdl_reports');
 		$this->data['mainmenu'] = 'report';
-		$this->rpt_collection = ['registered','viewed','contact'];
+		$this->rpt_collection = ['registered','registered_new', 'viewed', 'contact', 'contact_new'];
 
 		$this->perPage = PAGINATION_PAGE;
 		/*m_tile stands for module title*/
@@ -19,7 +19,7 @@ class Reports extends Generic_Controller
 	}
 
 	function view(){
-		if( ! $this->session->is_logged_in() ){
+		if( ! $this->session->is_logged_in() ) {
 			show_404(); 
 			die();
 		}
@@ -39,7 +39,7 @@ class Reports extends Generic_Controller
 
 		$sfilters = [];
 
-		if($record!=""){
+		if($record!="") {
 			$sfilters = array("c.camp_id" => $record);
 		}
 
@@ -67,6 +67,21 @@ class Reports extends Generic_Controller
 				
 				$records = $this->mdl_reports->get_registered_users_collection($sfilters, $keywords, $this->perPage, $page, $from, $to);
 				$total = count($this->mdl_reports->get_registered_users_collection($sfilters, $keywords, 0, 0, $from, $to));
+				break;
+
+			case 'registered_new':
+				#Planned Camp List
+				$via = 'registered';
+				$listFile =  'lists-users-registered-new';
+				$resultFile = 'users-registered-results-new';
+				$title_txt = $sectionTitle = 'New User Registered Reports';
+				
+				$this->data['columns'] = array('Users Name','Users Email','Users Mobile Number','Designation','City','State','Added Date');
+				$this->data['listing_url'] = $this->data['controller'] . '/view/type/registered_new';
+				$this->data['download_url'] = $this->data['controller'] . '/download/type/registered_new';
+				
+				$records = $this->mdl_reports->get_registered_users_collection_new($sfilters, $keywords, $this->perPage, $page, $from, $to);
+				$total = count($this->mdl_reports->get_registered_users_collection_new($sfilters, $keywords, 0, 0, $from, $to));
 				break;
 
 			case 'viewed':
@@ -97,6 +112,21 @@ class Reports extends Generic_Controller
 				
 				$records = $this->mdl_reports->get_contact_us_collection($sfilters, $keywords, $this->perPage, $page, $from, $to);//echo "<pre>";print_r($records);echo "</pre>";exit;
 				$total = count($this->mdl_reports->get_contact_us_collection($sfilters, $keywords, 0, 0, $from, $to));
+				break;
+
+			case 'contact_new':
+				#Planned Camp List
+				$via = 'contact';
+				$listFile =  'lists-users-contact-new';
+				$resultFile = 'users-contact-results-new';
+				$title_txt = $sectionTitle = 'New Contact Us Reports';
+				
+				$this->data['columns'] = array('User Name','Contact Number','Email ID','Message','Contacted DateTime');
+				$this->data['listing_url'] = $this->data['controller'] . '/view/type/contact_new';
+				$this->data['download_url'] = $this->data['controller'] . '/download/type/contact_new';
+				
+				$records = $this->mdl_reports->get_contact_us_collection_new($sfilters, $keywords, $this->perPage, $page, $from, $to);//echo "<pre>";print_r($records);echo "</pre>";exit;
+				$total = count($this->mdl_reports->get_contact_us_collection_new($sfilters, $keywords, 0, 0, $from, $to));
 				break;
 
 			default:
@@ -157,6 +187,14 @@ class Reports extends Generic_Controller
 				$records = $this->mdl_reports->get_registered_users_collection($filters, $keywords, 0, 0, $from_date, $to_date);
 				break;
 
+			case 'registered_new':
+
+				$file_name = 'New User Registered Reports';
+
+				$records = $this->mdl_reports->get_registered_users_collection_new($filters, $keywords, 0, 0, $from_date, $to_date);
+				break;
+
+
 			case 'viewed':
 
 				$file_name = 'Users Posts Viewed Reports';
@@ -171,15 +209,91 @@ class Reports extends Generic_Controller
 				$records = $this->mdl_reports->get_contact_us_collection($filters, $keywords, 0, 0, $from_date, $to_date);
 				break;
 
+			case 'contact_new':
+
+				$file_name = 'New Contact Us Reports';
+
+				$records = $this->mdl_reports->get_contact_us_collection_new($filters, $keywords, 0, 0, $from_date, $to_date);
+				break;
+
 			default:
 				# code...
 				break;
 		}
-		
+		// print_r($records);die();
 		$fields = $this->mdl_reports->_format_data_to_export($records, $type);
 		$this->export->download_send_headers( $file_name . "_Report-" . date("Y-m-d") . ".xls");
 		$this->export->array2csv($fields);
 	}
+
+	// function download_new(){
+	// 	if( ! $this->session->is_logged_in() ){
+	// 		show_404(); 
+	// 		die();
+	// 	}
+		
+	// 	$array = $this->uri->uri_to_assoc();
+	// 	$type = (array_key_exists('type', $array)) ? $array['type'] : '';
+	// 	$record_check = (array_key_exists('record', $array)) ? $array['record'] : '';
+	// 	$report_type = $this->rpt_collection;
+
+	// 	if(! in_array($type, $report_type)){
+	// 		show_404();
+	// 	}
+		
+	// 	$this->load->library('export');
+	// 	$filters = [];
+		
+	// 	$keywords = (isset($_GET['keywords'])) ? $_GET['keywords'] : '';
+	// 	$from_date = (isset($_GET['from'])) ? $_GET['from'] : '';
+	// 	$to_date = (isset($_GET['to'])) ? $_GET['to'] : '';
+		
+	// 	switch ($type) {
+
+	// 		case 'registered':
+
+	// 			$file_name = 'Users Registered Reports';
+
+	// 			$records = $this->mdl_reports->get_registered_users_collection($filters, $keywords, 0, 0, $from_date, $to_date);
+	// 			break;
+
+	// 		case 'registered_new':
+
+	// 			$file_name = 'New User Registered Reports';
+
+	// 			$records = $this->mdl_reports->get_registered_users_collection_new($filters, $keywords, 0, 0, $from_date, $to_date);
+	// 			break;
+
+	// 		case 'viewed':
+
+	// 			$file_name = 'Users Posts Viewed Reports';
+
+	// 			$records = $this->mdl_reports->get_users_posts_viewed_collection($filters, $keywords, 0, 0, $from_date, $to_date);
+	// 			break;
+
+	// 		case 'contact':
+
+	// 			$file_name = 'Contact Us Reports';
+
+	// 			$records = $this->mdl_reports->get_contact_us_collection($filters, $keywords, 0, 0, $from_date, $to_date);
+	// 			break;
+
+	// 		case 'contact_new':
+
+	// 			$file_name = 'New Contact Us Reports';
+
+	// 			$records = $this->mdl_reports->get_contact_us_collection_new($filters, $keywords, 0, 0, $from_date, $to_date);
+	// 			break;
+
+	// 		default:
+	// 			# code...
+	// 			break;
+	// 	}
+	// 	// print_r($records);die();
+	// 	$fields = $this->mdl_reports->_format_data_to_export($records, $type);
+	// 	$this->export->download_send_headers( $file_name . "_Report-" . date("Y-m-d") . ".xls");
+	// 	$this->export->array2csv($fields);
+	// }
 
 	function data_formatting_for_charts(){
 

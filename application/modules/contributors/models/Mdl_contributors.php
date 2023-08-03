@@ -216,6 +216,8 @@ class Mdl_contributors extends MY_Model {
 			$data['meta_slug'] = !empty($this->input->post('meta_slug'))?$this->input->post('meta_slug'):'';
 			$data['sort_order'] = !empty($this->input->post('sort_order'))?$this->input->post('sort_order'):'';
 
+			$data['created_at'] = date('Y-m-d H:i:s');
+
 			
 			$contributors_id = $this->_insert($data, $this->table_new);
 

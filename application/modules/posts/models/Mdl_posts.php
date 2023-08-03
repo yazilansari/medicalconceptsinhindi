@@ -1245,6 +1245,359 @@ class Mdl_posts extends MY_Model
 		return $response;
 	}
 
+	function modify_new()
+	{
+		/*Load the form validation Library*/
+		$this->load->helper('upload_media');
+
+		$this->load->library('form_validation');
+
+		$is_Available = $this->check_for_posted_record($this->p_key_new, $this->table_new);
+		if (!$is_Available['status']) {
+			return $is_Available;
+		}
+
+		$this->load->library('form_validation');
+
+		$errors = array();
+
+		/*$this->form_validation->set_rules('category_id', 'Category','trim|required|xss_clean');
+		$this->form_validation->set_rules('sub_category_id', 'Sub Category','trim|required|xss_clean');*/
+		$this->form_validation->set_rules('contributors_id', 'Contributors', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('upload_title', 'Upload Title', 'trim|required|max_length[150]|xss_clean');
+		// $this->form_validation->set_rules('short_description', 'Short Description', 'trim|required|xss_clean');
+		// $this->form_validation->set_rules('meta_title', 'Meta Title', 'trim|required|xss_clean');
+		// $this->form_validation->set_rules('meta_description', 'Meta Description', 'trim|required|xss_clean');
+		// $this->form_validation->set_rules('meta_slug', 'Meta Slug', 'trim|required|xss_clean');
+		/*$this->form_validation->set_rules('sort_order', 'Sort Sequence Number','trim|required|xss_clean');*/
+
+		$upload_type 					= !empty($this->input->post('upload_type')) ? TRUE : FALSE;
+		// $video_type 					= !empty($this->input->post('video_type')) ? TRUE : FALSE;
+		$post_id 				= $this->input->post('id');/*
+		$sub_category_id 				= $this->input->post('sub_category_id');*/
+		$check_data = $this->get_records(['id' => $post_id], 'mch_posts');
+
+		$category_id = $check_data[0]->category_id;
+		$sub_category_id = $check_data[0]->sub_category_id;
+
+		if ($upload_type == FALSE) {
+			$errors['upload_type'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Upload Type field is required.' . '</label>';
+		} else {
+
+			if ($_POST['upload_type'] == 'text') {
+				/*$errors['desc_errors'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Upload Description field is required.' . '</label>';			*/
+				$this->form_validation->set_rules('upload_description', 'Upload Description', 'trim|required|xss_clean');
+			} else if ($_POST['upload_type'] == 'video') {
+
+				// if ($video_type == FALSE) {
+				// 	$errors['video_type'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Video Type field is required.' . '</label>';
+				// } else {
+
+					// if ($this->input->post('video_type') == 'inhouse') {
+
+					// 	if (!isset($_FILES['upload_path']) && $_POST['upload_path_name']) {
+					// 		$errors['upload_path'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Upload File field is required.' . '</label>';
+					// 	} else if (isset($_FILES['upload_path']) && $_FILES['upload_path']['name'] != '' && $_POST['video_type'] == 'inhouse' && ($_FILES['upload_path']['type'] != 'video/mp4' && $_FILES['upload_path']['type'] != 'video/mkv' && $_FILES['upload_path']['type'] != 'video/flv' && $_FILES['upload_path']['type'] != 'video/avi' && $_FILES['upload_path']['type'] != 'video/3gp')) {
+					// 		$errors['upload_path'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'Please Upload Appropriate Video File.' . '</label>';
+					// 	}
+					// } else if ($this->input->post('video_type') == 'youtube') {
+						$this->form_validation->set_rules('youtube_video_code', 'YouTube Video ID', 'trim|required|xss_clean');
+					// }
+				// }
+			} else {
+
+				if (!isset($_FILES['upload_path']) && $_POST['upload_path_name']) {
+					$errors['upload_path'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Upload File field is required.' . '</label>';
+				} else {
+
+					// if ($_FILES['upload_path']['name'] != '' && $_POST['upload_type'] == 'audio' && ($_FILES['upload_path']['type'] != 'audio/basic' && $_FILES['upload_path']['type'] != 'audio/mpeg' && $_FILES['upload_path']['type'] != 'audio/x-wav' && $_FILES['upload_path']['type'] != 'audio/mp3' && $_FILES['upload_path']['type'] != 'audio/aac')) {
+					// 	$errors['upload_path'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'Please Upload Appropriate Audio File.' . '</label>';
+					// }
+					// if ($_FILES['upload_path']['name'] != '' && $_POST['upload_type'] == 'pdf' && $_FILES['upload_path']['type'] != 'application/pdf') {
+					// 	$errors['upload_path'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'Please Upload Appropriate PDF File.' . '</label>';
+					// }
+					if ($_FILES['upload_path']['name'] != '' &&  $_POST['upload_type'] == 'image' && ($_FILES['upload_path']['type'] != 'image/png' && $_FILES['upload_path']['type'] != 'image/jpeg' && $_FILES['upload_path']['type'] != 'image/jpg')) {
+						$errors['upload_path'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'Please Upload Appropriate Image File.' . '</label>';
+					}
+				}
+			}
+		}
+		// print_r($this->form_validation->run());die(';;');
+		// $upload_for_user_type 			= !empty($this->input->post('upload_for_user_type')) ? TRUE : FALSE;
+		// if ($upload_for_user_type == FALSE) {
+		// 	$errors['upload_for_user_type'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Upload For User Type field is required.' . '</label>';
+		// }
+
+		// if (!isset($_FILES['thumbnail']) && $_POST['thumbnail_name']) {
+		// 	$errors['thumbnail'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Thumbnail field is required.' . '</label>';
+		// }
+
+		// if ($_FILES['thumbnail']['name'] != '' && ($_FILES['thumbnail']['type'] != 'image/png' && $_FILES['thumbnail']['type'] != 'image/jpeg' && $_FILES['thumbnail']['type'] != 'image/jpg')) {
+		// 	$errors['thumbnail'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'Please Upload Appropriate Thumbnail Image File.' . '</label>';
+		// }
+
+		// if (empty($_POST['tags'])) {
+		// 	$errors['error_tags'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'The Upload Tags field is required.' . '</label>';
+		// }
+
+		// if (isset($_POST['video_type']) && $_POST['video_type'] == 'youtube' && $_POST['youtube_video_code'] != '') {
+		// 	$this->form_validation->set_rules('youtube_video_code', 'YouTube Video ID', 'trim|required|youtube_video_exists|xss_clean');
+		// }
+
+		if (!$this->form_validation->run() || !empty($errors)) {
+
+			foreach ($this->input->post() as $key => $value) {
+				print_r($value);
+				$errors[$key] = form_error($key, '<label class="error">', '</label>');
+			}
+			$response['errors'] = array_filter($errors); // Some might be empty
+			$response['status'] = FALSE;
+		} else {
+			// die('nnnn');
+			$data = array();
+			// $data['category_id'] = $category_id =  !empty($this->input->post('category_id')) ? $this->input->post('category_id') : NULL;
+
+			// $data['sub_category_id'] = $sub_category_id =  !empty($this->input->post('sub_category_id')) ? $this->input->post('sub_category_id') : NULL;
+
+			$data['date'] = !empty($this->input->post('eventdate')) ? date('Y-m-d', strtotime($this->input->post('eventdate'))) : "0000-00-00";
+
+			// $data['event_time'] = !empty($this->input->post('eventtime')) ? $this->input->post('eventtime') : "00:00:00";
+
+			// $data['event_link'] = !empty($this->input->post('event_link')) ? htmlentities($this->input->post('event_link')) : NULL;
+
+			$data['contributor_id'] =  !empty($this->input->post('contributors_id')) ? $this->input->post('contributors_id') : NULL;
+
+			$data['title'] = !empty($this->input->post('upload_title')) ? $this->input->post('upload_title') : NULL;
+
+			// $data['short_description'] = !empty($this->input->post('short_description')) ? $this->input->post('short_description') : NULL;
+
+			// $data['upload_for_user_type'] = !empty($this->input->post('upload_for_user_type')) ? $this->input->post('upload_for_user_type') : NULL;
+
+			$data['type'] = !empty($this->input->post('upload_type')) ? $this->input->post('upload_type') : NULL;
+
+			// $data['video_type'] = !empty($this->input->post('video_type')) ? $this->input->post('video_type') : NULL;
+
+			// if ($_POST['upload_type'] == 'text') {
+				$data['description'] = !empty($this->input->post('upload_description')) ? $this->input->post('upload_description') : NULL;
+			// }
+
+			// if (isset($_POST['video_type']) && $_POST['video_type'] == 'youtube') {
+				$data['video_url'] = !empty($this->input->post('youtube_video_code')) ? $this->input->post('youtube_video_code') : NULL;;
+			// }
+
+			// $data['tags'] = !empty($this->input->post('tags')) ? $this->input->post('tags') : NULL;
+
+			/*$data['sort_order'] = !empty($this->input->post('sort_order'))?$this->input->post('sort_order'):NULL;*/
+
+			$one_record = $this->model->get_records(['id' => $_POST['id']], 'mch_posts');
+			$one_record_sort_order = $one_record[0]->sort_order;
+
+			$affected_rows = $this->_update(['id' => $_POST['id'], 'is_active' => '1'], $data, 'mch_posts');
+
+			/*if(!empty($affected_rows) && ($one_record_sort_order != $data['sort_order'])){
+				$all_records = $this->model->get_records(['category_id'=>$category_id,'sub_category_id'=>$sub_category_id],'upload_data');
+				// auto change in sequence of the files on edit of post
+				foreach ($all_records as $record) {
+					if(($data['sort_order'] <= $record->sort_order) && ($upload_data_id !=$record->upload_data_id )){
+						$this->db->set('sort_order', 'sort_order+1', FALSE);
+						$this->db->where('upload_data_id', $record->upload_data_id);
+						$this->db->update('upload_data');
+					}
+				}
+			}*/
+
+			// if ($affected_rows) {
+
+				// $check_for_meta = $this->get_records(['meta_upload_data_id' => $_POST['upload_data_id'], 'is_active' => '1'], 'meta_tag_details', ['*']);
+
+				// if (empty($check_for_meta)) {
+
+				// 	$meta_data = array();
+				// 	$meta_data['meta_upload_data_id'] = $_POST['upload_data_id'];
+				// 	$meta_data['meta_title'] = !empty($this->input->post('meta_title')) ? $this->input->post('meta_title') : '';
+				// 	$meta_data['meta_description'] = !empty($this->input->post('meta_description')) ? $this->input->post('meta_description') : '';
+				// 	$meta_data['meta_keyword'] = !empty($this->input->post('meta_keyword')) ? $this->input->post('meta_keyword') : '';
+				// 	$meta_data['meta_post_url'] = !empty($this->input->post('meta_post_url')) ? $this->input->post('meta_post_url') : '';
+				// 	$meta_data['meta_slug'] = !empty($this->input->post('meta_slug')) ? $this->input->post('meta_slug') : '';
+
+				// 	$meta_data_id = $this->_insert($meta_data, 'meta_tag_details');
+				// } else {
+
+				// 	$meta_data = array();
+				// 	$meta_data['meta_title'] = !empty($this->input->post('meta_title')) ? $this->input->post('meta_title') : '';
+				// 	$meta_data['meta_description'] = !empty($this->input->post('meta_description')) ? $this->input->post('meta_description') : '';
+				// 	$meta_data['meta_keyword'] = !empty($this->input->post('meta_keyword')) ? $this->input->post('meta_keyword') : '';
+				// 	$meta_data['meta_post_url'] = !empty($this->input->post('meta_post_url')) ? $this->input->post('meta_post_url') : '';
+				// 	$meta_data['meta_slug'] = !empty($this->input->post('meta_slug')) ? $this->input->post('meta_slug') : '';
+
+				// 	$affected_rows = $this->_update(['meta_upload_data_id' => $_POST['upload_data_id']], $meta_data, 'meta_tag_details');
+				// }
+			// }
+
+			if ($affected_rows != "" && $_POST['upload_type'] == 'image' && isset($_FILES['upload_path']) && $_FILES['upload_path']['name'] != '') {
+				$imgpath = $this->config->item("s3_posts_images_upload_path") . $sub_category_id . '/';
+				$image_upload = upload_media('upload_path', $imgpath, false, $imgpath, ['gif', 'jpeg', 'jpg', 'jpe', 'png', 'tiff', 'tif'], 300000);
+
+				if (array_key_exists('error', $image_upload)) {
+					$response['status'] = false;
+					$response['errors'] = [
+						'upload_path' => "<label class='error'>" . $image_upload['error'] . "</label>"
+					];
+					return $response;
+				}
+
+				if (!empty($image_upload[0]['full_path'])) {
+					$image_name = $image_upload[0]['raw_name'] . $image_upload[0]['file_ext'];
+
+					$update_image = $this->_update(
+						['id' => $post_id],
+						['image' => $image_name],
+						'mch_posts'
+					);
+				}
+
+				//$new_image_name = $data['upload_type']."_".time()."-".$upload_data_id;
+
+				//$image_upload = $this->file_upload($this->config->item("posts_images_upload_path").$sub_category_id.'/','upload_path',$new_image_name);
+				/*if($image_upload['status']==1){
+					$image_name = $image_upload['u_response']['filename'];
+
+					$update_image = $this->_update(['upload_data_id' => $upload_data_id],
+						['upload_path' => $image_name], 'upload_data');
+				}*/
+			}
+
+			// if ($affected_rows != "" && $_POST['upload_type'] == 'pdf' && isset($_FILES['upload_path']) && $_FILES['upload_path']['name'] != '') {
+
+			// 	$pdf_upload = upload_media('upload_path', '', true, $this->config->item("s3_posts_pdf_upload_path") . $sub_category_id . '/', ['pdf', 'jpeg', 'png'], 300000);
+
+			// 	if (array_key_exists('error', $pdf_upload)) {
+			// 		$response['status'] = false;
+			// 		$response['errors'] = [
+			// 			'upload_path' => "<label class='error'>" . $pdf_upload['error'] . "</label>"
+			// 		];
+			// 		return $response;
+			// 	}
+
+			// 	if (!empty($pdf_upload[0]['full_path'])) {
+			// 		$pdf_name = $pdf_upload[0]['full_path'];
+
+			// 		$update_pdf = $this->_update(
+			// 			['upload_data_id' => $upload_data_id],
+			// 			['upload_path' => $pdf_name],
+			// 			'upload_data'
+			// 		);
+			// 	}
+
+
+
+				//$new_pdf_name = $data['upload_type']."_".time()."-".$upload_data_id;
+
+				//$pdf_upload = $this->pdf_upload($this->config->item("posts_pdf_upload_path").$sub_category_id.'/','upload_path',$new_pdf_name);
+				/*if($pdf_upload['status']==1){
+					$pdf_name = $pdf_upload['u_response']['filename'];
+
+					$update_pdf = $this->_update(['upload_data_id' => $upload_data_id],
+						['upload_path' => $pdf_name], 'upload_data');
+				}*/
+			// }
+
+			// if ($affected_rows != "" && isset($_FILES['upload_path']) && ($_POST['upload_type'] == 'audio' || $_POST['upload_type'] == 'video') && $_FILES['upload_path']['name'] != '') {
+
+			// 	$new_file_name = $data['upload_type'] . "_" . time() . "-" . $upload_data_id;
+
+			// 	$path = '';
+
+			// 	if ($_POST['upload_type'] == 'audio') {
+			// 		$path = $this->config->item("posts_audio_upload_path") . $sub_category_id . '/';
+			// 	}
+
+			// 	if ($_POST['upload_type'] == 'video' && $_POST['video_type'] == 'inhouse') {
+			// 		$path = $this->config->item("s3_posts_video_upload_path") . $sub_category_id . '/';
+			// 	}
+
+			// 	if ($path != '') {
+
+			// 		$file_upload = upload_media('upload_path', $path, false, $path, ['mpeg', 'x-wav', 'aac', 'mp3', 'mp4', 'mkv', 'flv', 'avi', '3gp'], 300000);
+			// 		if (array_key_exists('error', $file_upload)) {
+			// 			$response['status'] = false;
+			// 			$response['errors'] = [
+			// 				'upload_path' => "<label class='error'>" . $file_upload['error'] . "</label>"
+			// 			];
+			// 			return $response;
+			// 		}
+			// 		//print_r($file_upload); die();
+
+			// 		if (!empty($file_upload[0]['full_path'])) {
+			// 			$av_file_name = $file_upload[0]['raw_name'] . $file_upload[0]['file_ext'];
+
+			// 			$update_file = $this->_update(
+			// 				['upload_data_id' => $upload_data_id],
+			// 				['upload_path' => $av_file_name],
+			// 				'upload_data'
+			// 			);
+			// 		}
+			// 	}
+			// }
+				// print_r($affected_rows);die();
+			if ($affected_rows != "" && isset($_FILES['thumbnail']) && $_FILES['thumbnail']['name'] != '') {
+
+				$thumbnailpath = $this->config->item("s3_posts_thumbnail_upload_path") . $sub_category_id . '/';
+				$image_upload = upload_media('thumbnail', $thumbnailpath, false, $thumbnailpath, ['gif', 'jpeg', 'jpg', 'jpe', 'png', 'tiff', 'tif'], 300000);
+
+				if (array_key_exists('error', $image_upload)) {
+					$response['status'] = false;
+					$response['errors'] = [
+						'thumbnail' => "<label class='error'>" . $image_upload['error'] . "</label>"
+					];
+					return $response;
+				}
+
+				if (!empty($image_upload[0]['full_path'])) {
+
+					$image_name = $image_upload[0]['raw_name'] . $image_upload[0]['file_ext'];
+
+					$update_image = $this->_update(
+						['id' => $post_id],
+						['thumbnail_image' => $image_name],
+						'mch_posts'
+					);
+				}
+			} else {
+				// die(';;;');
+				// $thumbnailpath = $this->config->item("s3_posts_thumbnail_upload_path") . $sub_category_id . '/';
+				// $image_upload = upload_media('thumbnail', $thumbnailpath, false, $thumbnailpath, ['gif', 'jpeg', 'jpg', 'jpe', 'png', 'tiff', 'tif'], 300000);
+
+
+
+				// if (array_key_exists('error', $image_upload)) {
+				// 	$response['status'] = false;
+				// 	$response['errors'] = [
+				// 		'thumbnail' => "<label class='error'>" . $image_upload['error'] . "</label>"
+				// 	];
+				// 	return $response;
+				// }
+
+
+				// if (!empty($image_upload[0]['full_path'])) {
+
+				// 	$video_thumbnail_file_name = $image_upload[0]['full_path'];
+
+				// 	$update_image = $this->_update(
+				// 		['id' => $post_id],
+				// 		['thumbnail_image' => $video_thumbnail_file_name],
+				// 		'mch_posts'
+				// 	);
+				// }
+			}
+
+			$response['status'] = ((int) ($affected_rows)) ? TRUE : FALSE;
+			$response['redirect'] = 'lists_new';
+		}
+
+		return $response;
+	}
+
 
 
 	function remove()

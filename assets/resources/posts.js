@@ -22,24 +22,27 @@
 		if(check_upload_types_data=='audio'){$("#description_div").slideUp();$("#upload_div").slideDown();}
 		if(check_upload_types_data=='video'){
 
-			if(check_video_types=='youtube'){
-				$("#description_div").slideUp();
-				$("#upload_div").slideUp();
-				$("#div_video_type").slideDown();
-				$("#div_youtube_video").slideDown();
-			}
-			if(check_video_types=='inhouse'){
-				$("#description_div").slideUp();
-				$("#upload_div").slideDown();
-				$("#div_video_type").slideUp();
-				$("#div_youtube_video").slideUp();
-			}
+			// if(check_video_types=='youtube'){
+			// 	$("#description_div").slideUp();
+			// 	$("#upload_div").slideUp();
+			// 	$("#div_video_type").slideDown();
+			// 	$("#div_youtube_video").slideDown();
+			// }
+			// if(check_video_types=='inhouse'){
+			// 	$("#description_div").slideUp();
+			// 	$("#upload_div").slideDown();
+			// 	$("#div_video_type").slideUp();
+			// 	$("#div_youtube_video").slideUp();
+			// }
+			$("#description_div").hide();
+			$("#upload_div").hide();
+			$("#div_youtube_video").show();
 			
 		}
 		// if(check_upload_types_data=='ppt'){$("#description_div").slideUp();$("#upload_div").slideDown();}
 		// if(check_upload_types_data=='pdf'){$("#description_div").slideUp();$("#upload_div").slideDown();}
-		if(check_upload_types_data=='text'){$("#upload_div").slideUp();$("#description_div").slideDown();}	
-		if(check_upload_types_data=='image'){$("#description_div").slideUp();$("#upload_div").slideDown();}		
+		if(check_upload_types_data=='text'){$("#upload_div").hide();$("#description_div").show();$("#div_youtube_video").hide();}	
+		if(check_upload_types_data=='image'){$("#description_div").hide();$("#upload_div").show();$("#div_youtube_video").hide();}		
 	} else {
 		// alert();
 		$("#description_div").hide();

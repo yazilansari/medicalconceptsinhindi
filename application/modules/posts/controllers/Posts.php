@@ -305,7 +305,7 @@ class Posts extends Generic_Controller
 
 		$this->data[$key] = $id = (array_key_exists('record', $array)) ? (int) $array['record'] : 0;
 		
-		$this->data['info'] = $this->model->get_collections_new([ "ud.upload_data_id" => $id ]);
+		$this->data['info'] = $this->model->get_collection([ "ud.upload_data_id" => $id ]);
 		//echo "<pre>";print_r($this->data);echo "</pre>";exit;
 		if(! count($this->data['info']) ){ show_404(); }
 
@@ -313,7 +313,7 @@ class Posts extends Generic_Controller
 		$this->data['js']	= ['generic-edit.js', 'posts.js'];
 
 		$title_txt = 'Edit '. ucfirst($this->module).' New';
-		$this->set_view($this->data, 'edit_new', '_admin',$title_txt);
+		$this->set_view($this->data, 'edit', '_admin',$title_txt);
 	}
 
 	function edit_new(){
@@ -325,7 +325,7 @@ class Posts extends Generic_Controller
 
 		$this->data[$key] = $id = (array_key_exists('record', $array)) ? (int) $array['record'] : 0;
 		
-		$this->data['info'] = $this->model->get_collections_new([ "ud.upload_data_id" => $id ]);
+		$this->data['info'] = $this->model->get_collections_new([ "p.id" => $id ]);
 		//echo "<pre>";print_r($this->data);echo "</pre>";exit;
 		if(! count($this->data['info']) ){ show_404(); }
 

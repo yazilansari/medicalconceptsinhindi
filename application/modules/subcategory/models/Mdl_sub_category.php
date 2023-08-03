@@ -382,6 +382,8 @@ class Mdl_sub_category extends MY_Model {
 
 			$data['video_url'] = !empty($this->input->post('video_url'))?$this->input->post('video_url'):NULL;
 
+			$data['created_at'] = date('Y-m-d H:i:s');
+
 			$last_sort_order = $this->model->get_records(['category_id'=>$category_id],'mch_sub_categories',[],'sort_order desc',1);
 
 			if(!empty($last_sort_order)){
@@ -463,6 +465,7 @@ class Mdl_sub_category extends MY_Model {
 
 			$data['sub_category_id'] = $sub_category_id =  !empty($this->input->post('sub_category_id'))?$this->input->post('sub_category_id'):NULL;
 
+			$data['created_at'] = date('Y-m-d H:i:s');
 
 			// $data['folder_id'] = $folder_id =  !empty($this->input->post('folder_id'))?$this->input->post('folder_id'):NULL;
 

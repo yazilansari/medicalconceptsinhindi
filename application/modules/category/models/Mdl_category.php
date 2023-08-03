@@ -193,8 +193,9 @@ class Mdl_category extends MY_Model {
 		else{
 			$data = array();
 			
-			$data['name'] = $category_name ;
-			$data['parent_category_id'] = $parent_category_id ;
+			$data['name'] = $category_name;
+			$data['parent_category_id'] = $parent_category_id;
+			$data['created_at'] = date('Y-m-d H:i:s');
 			$category_id = $this->_insert($data, $this->table_new);
 
 			// $map_data = array();
