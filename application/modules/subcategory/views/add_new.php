@@ -42,7 +42,7 @@
                     </div>
                 </div> 
 
-                 <label for="contributors_data" class="form-label">Sub Category Description<span class="required">*</span></label>
+                 <label for="contributors_data" class="form-label">Sub Category Description</label>
 				<div class="input-group">
                     <div class="form-line">
                         <textarea id="contributors_data" name="description" class="form-control"></textarea>

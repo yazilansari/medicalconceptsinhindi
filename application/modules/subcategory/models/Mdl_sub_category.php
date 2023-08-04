@@ -163,7 +163,7 @@ class Mdl_sub_category extends MY_Model {
 		}
 
 		$q->where("sc.is_active", "1");
-		// $q->group_by('sc.sub_category_id');
+		$q->group_by('sc.id');
 		$q->order_by('sci.id', 'DESC');
 
 		if(!empty($limit)) { $q->limit($limit, $offset); }
@@ -347,7 +347,7 @@ class Mdl_sub_category extends MY_Model {
 		$this->form_validation->set_rules('main_category_id', 'Main Category','trim|required|xss_clean');
 		$this->form_validation->set_rules('category_id', 'Category','trim|required|xss_clean');
 		$this->form_validation->set_rules('sub_category_name','Sub Category Name','trim|required|unique_key[mch_sub_categories.name]|xss_clean');
-		$this->form_validation->set_rules('description','Description','trim|required|xss_clean');
+		// $this->form_validation->set_rules('description','Description','trim|required|xss_clean');
 		// $this->form_validation->set_rules('ebook_ejournal_url', 'Ebook Ejournal URL','trim|required|xss_clean');
 		// $this->form_validation->set_rules('video_url','Video URL','trim|required|xss_clean');
 
@@ -446,7 +446,7 @@ class Mdl_sub_category extends MY_Model {
 
 
 		$errors = array();	      
-		if($_FILES['sub_category_image']['name']!='' && ($_FILES['sub_category_image']['type']!='image/png' && $_FILES['sub_category_image']['type']!='image/jpeg' && $_FILES['sub_category_image']['type']!='image/jpg')){
+		if($_FILES['sub_category_image']['name']!='' && ($_FILES['sub_category_image']['type']!='image/png' && $_FILES['sub_category_image']['type']!='image/jpeg' && $_FILES['sub_category_image']['type']!='image/jpg' && $_FILES['sub_category_image']['type']!='video/mp4')){
 			$errors['sub_category_image'] = '<label class="error" style="color:#F44336; font-size:12px; font-weight:normal;">' . 'Please Upload Appropriate Image File.' . '</label>';			
 		}
 		
@@ -460,6 +460,8 @@ class Mdl_sub_category extends MY_Model {
 		}
 		else{
 			$data = array();
+
+			$data['parent_category_id'] = $main_category_id = !empty($this->input->post('main_category_id'))?$this->input->post('main_category_id'):NULL;
 
 			$data['category_id'] = $category_id =  !empty($this->input->post('category_id'))?$this->input->post('category_id'):NULL;
 
@@ -502,6 +504,8 @@ class Mdl_sub_category extends MY_Model {
 			}*/
 
 			if($subcategory_image_id !=""){
+
+				// echo "<pre>";print_r($_FILES['sub_category_image']);die();
 				$new_image_name = "Image_".time()."-".$subcategory_image_id;
 				
 				$image_upload = $this->file_upload($this->config->item("sub_category_images_upload_path"), 'sub_category_image', $new_image_name);
@@ -627,7 +631,7 @@ class Mdl_sub_category extends MY_Model {
 			$this->form_validation->set_rules('sub_category_name','Sub Category Name','trim|required|xss_clean');
 		}
 
-		$this->form_validation->set_rules('description','Description','trim|required|xss_clean');
+		// $this->form_validation->set_rules('description','Description','trim|required|xss_clean');
 		// $this->form_validation->set_rules('upload_for_user_type', 'Upload Data for User Type','trim|required|xss_clean');
 		//$this->form_validation->set_rules('sort_order','Sort Order','trim|required|xss_clean');
 

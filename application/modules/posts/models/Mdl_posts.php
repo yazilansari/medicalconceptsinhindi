@@ -557,7 +557,7 @@ class Mdl_posts extends MY_Model
 		$this->form_validation->set_rules('category_id', 'Category', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('sub_category_id', 'Sub Category', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('contributors_id', 'Contributors', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('upload_title', 'Upload Title', 'trim|required|max_length[150]|unique_key[upload_data.upload_title]|xss_clean');
+		$this->form_validation->set_rules('upload_title', 'Upload Title', 'trim|required|max_length[150]|unique_key[mch_posts.title]|xss_clean');
 		// $this->form_validation->set_rules('short_description', 'Short Description', 'trim|required|xss_clean');
 		// $this->form_validation->set_rules('meta_title', 'Meta Title', 'trim|required|xss_clean');
 		// $this->form_validation->set_rules('meta_description', 'Meta Description', 'trim|required|xss_clean');

@@ -93,6 +93,8 @@ $config['gallery_images_path_list'] = $config['base_url'] . '../uploads/assets/u
 $config['gallery_image_exists'] = '/assets/uploaded_data/gallery_img/';
 // $config['gallery_images_path_edit'] = $config['base_url'] . '../../../uploads/assets/uploaded_data/gallery_img/';
 
+// $config['sub_category_videos_upload_path'] = './assets/uploaded_data/subcategory_video/';
+
 //default key
 // $config['youtube_api_key'] = 'AIzaSyAIjEiTm_p82liEMnLWDleVfkxDZAlb72M';
 

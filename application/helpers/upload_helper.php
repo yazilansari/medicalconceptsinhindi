@@ -23,7 +23,7 @@ if (!function_exists('upload')) {
 			$config['file_name'] = $options['new_name'];
 		}
 
-		if(!in_array($_FILES["$fieldName"]["type"], array('image/png','image/jpeg','image/jpg','application/pdf')) ){
+		if(!in_array($_FILES["$fieldName"]["type"], array('image/png','image/jpeg','image/jpg','application/pdf','video/mp4')) ){
 			return array('errors'=> 'Only image or pdf files allowed');
 		}
 

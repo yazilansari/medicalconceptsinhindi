@@ -7,7 +7,14 @@
 	<td><?php echo $record->sub_category_name ?></td>
 	<td><?php echo $record->category_name ?></td>
 	<td><?php echo $record->parent_category_name ?></td>
+	<?php if(explode('.', $record->image)[3] == 'mp4') { ?>
+	<td><video width="50" height="50" controls="" poster="">
+			<source src="<?php echo $record->image; ?>" type="video/mp4">
+		</video>
+	</td>
+	<?php } else { ?>
 	<td><img src="<?php echo $record->image; ?>" style="width: 50px;height: 50px;"></td>
+	<?php } ?>
 </tr>
 <?php $i++;  } ?>
 

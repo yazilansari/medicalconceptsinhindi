@@ -75,7 +75,7 @@
                 <li class="<?php echo ($this->uri->uri_string() == 'subcategory/lists_image') ? 'active' : '';?>">
                     <a href="<?php echo base_url("subcategory/lists_image?t=$timestamp") ?>">
                     <i class="material-icons">collections</i>
-                    <span>Sub Category Images</span>
+                    <span>Sub Category Images/Video</span>
                     </a>
                 </li>
                 <li class="<?php echo ($this->uri->uri_string() == 'posts/lists') ? 'active' : '';?>">

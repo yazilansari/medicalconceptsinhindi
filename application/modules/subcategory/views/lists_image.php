@@ -3,11 +3,11 @@
 		<div class="card">
 			<div class="header">
 				<h2>
-					<?= $pg_title ?>
+					<?= $pg_title ?>/Video
 				</h2>
 				<ul class="header-dropdown m-r--5">
 					<li class="dropdown">
-						<a class="btn btn-primary waves-effect" href="<?php echo base_url("$controller/add_image") ?>">Add <?= ucfirst('image') ?></a>
+						<a class="btn btn-primary waves-effect" href="<?php echo base_url("$controller/add_image") ?>">Add <?= ucfirst('image') ?>/Video</a>
 						<!-- <a class="btn btn-primary waves-effect" href="#" id="import" data-toggle="modal" data-target="#uploadbox" title="Upload CSV">Upload CSV</a> -->
 						<a class="btn btn-primary waves-effect" href="<?php echo base_url("$download_url") ?>" id="export" title="Export">Export</a>
 						<!-- <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

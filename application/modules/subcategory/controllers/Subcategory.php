@@ -14,7 +14,7 @@ class Subcategory extends Generic_Controller
 		$this->data['mainmenu'] = 'subcategory';
 		$this->data['controller'] = $this->data['menu'] = $this->data['m_title'] = $this->module;
 		$this->data['columns'] = ['Sub Category Name','Category Name','Parent Category Name', 'Thumbnail Image'];
-		$this->data['columns_image'] = ['Sub Category Name','Category Name','Parent Category Name','Image'];
+		$this->data['columns_image'] = ['Sub Category Name','Category Name','Parent Category Name','Image/Video'];
 		$this->csv_fields = ['Category Name'];
 		
 	}

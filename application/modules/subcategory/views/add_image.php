@@ -2,7 +2,7 @@
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="card">
 			<div class="header">
-				<h2><?= $pg_title ?></h2>
+				<h2><?= $pg_title ?>/Video</h2>
 			</div>
 
 		<div class="body">
@@ -58,10 +58,10 @@
                     </div>
                 </div>  -->
 				
-			    <label class="form-label">Image (jpg, jpeg, png)<span class="required">*</span></label>
+			    <label class="form-label">Image (jpg, jpeg, png) / Video (mp4)<span class="required">*</span></label>
                 <div class="input-group">
                     <div class="form-line">
-                        <input type="file" id="sub_category_image" name="sub_category_image" class="form-control" >
+                        <input type="file" id="sub_category_image" name="sub_category_image" class="form-control" required>
                     </div>
                 </div>
 

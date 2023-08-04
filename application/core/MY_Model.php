@@ -30,7 +30,7 @@ class MY_Model extends CI_Model {
 
 		if(!empty($_FILES[$field_name]['name'])){
 			$details = upload(array('upload_path'=>$path, 'name'=> $field_name, 'new_name'=> $new_name));
-
+			// print_r($details);die();
 			if(array_key_exists('errors', $details)){
 				return ['status'=> FALSE, 'u_response'=> $details];
 			}
