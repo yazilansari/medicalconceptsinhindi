@@ -3,7 +3,7 @@
 		<div class="card" style="overflow: hidden;">
 			<div class="header">
 				<h2>
-					<!-- <?= $pg_title ?> -->
+					<?= $pg_title ?> New
 				</h2>
 				<ul class="header-dropdown m-r--5">
 					<li class="dropdown">

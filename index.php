@@ -1,9 +1,9 @@
 <?php
 date_default_timezone_set("Asia/Kolkata");
-// echo $_SERVER['REQUEST_URI'];die();
-// if(explode('/', $_SERVER['REQUEST_URI'])[1] != 'v1' && explode('/', $_SERVER['REQUEST_URI'])[1] != 'admin') {
-//     header('Location: 2023');    
-// }
+// echo explode('/', $_SERVER['REQUEST_URI'])[2];die();
+if(explode('/', $_SERVER['REQUEST_URI'])[2] != 'v1' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'admin' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'App_vision' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'App_vision_new' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'category' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'folder' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'subcategory' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'posts' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'contributors' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'comments' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'gallery' && explode('/', $_SERVER['REQUEST_URI'])[2] != 'reports'&& explode('/', $_SERVER['REQUEST_URI'])[2] != 'main_category') {
+    header('Location: 2023');    
+}
 /**
  * CodeIgniter
  *
