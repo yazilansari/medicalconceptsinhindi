@@ -1,4 +1,4 @@
-<?php $i = 1; if(sizeof($collection)) : foreach ($collection as $record) { $id = $record->id; ?>
+<?php $i = 1; if(sizeof($collection)) : foreach ($collection as $record) { $id = $record->id; //echo $record->image;echo "<br>"?>
 <tr>
 	<td>
 		<input type="checkbox" name="ids[]" value="<?php echo $id ?>" id="check_<?= $id ?>" class="chk-col-<?= $active_theme; ?> filled-in" />
@@ -7,14 +7,14 @@
 	<td><?php echo $record->sub_category_name ?></td>
 	<td><?php echo $record->category_name ?></td>
 	<td><?php echo $record->parent_category_name ?></td>
-	<?php if(explode('.', $record->image)[3] == 'mp4') { ?>
+	<?php if(explode('/', $record->image)[2] == 'user.png') { ?>
 	<td><video width="50" height="50" controls="" poster="">
 			<source src="<?php echo $record->image; ?>" type="video/mp4">
 		</video>
 	</td>
-	<?php } else { ?>
+	<?php } else { ?> 
 	<td><img src="<?php echo $record->image; ?>" style="width: 50px;height: 50px;"></td>
-	<?php } ?>
+	<?php } ?> 
 </tr>
 <?php $i++;  } ?>
 

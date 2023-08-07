@@ -287,16 +287,16 @@ a.phonemodal:hover { background: none; }
 													  $res = mysqli_query($conn, $q);
 													  if(mysqli_num_rows($res) > 0) {
 													  	while ($row = mysqli_fetch_assoc($res)) { ?>
-													  		<li><a href="text-health-education.php" id="st-<?php echo $row['id']; ?>" class="post-tabs <?php echo $count == 1 ? 'active' : ''?>"><?php echo $row['name']; ?></a></li>
+													  		<li><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>" id="st-<?php echo $row['id']; ?>" class="post-tabs <?php echo $count == 1 ? 'active' : ''?>"><?php echo $row['name']; ?></a></li>
 												<?php $count++; } } ?>
 											</ul>
 										</div>
 										<div class="life-style-post text-center">
-											<?php $count = 1; $q = "SELECT * FROM `mch_categories` WHERE `parent_category_id` = 1 AND `is_active` = 1";
+											<?php $countt = 1; $q = "SELECT * FROM `mch_categories` WHERE `parent_category_id` = 1 AND `is_active` = 1";
 												  $res = mysqli_query($conn, $q);
 												  if(mysqli_num_rows($res) > 0) {
 												  while ($row = mysqli_fetch_assoc($res)) { ?>
-													<div id="<?php echo $row['id']; ?>" class="life-style-post-bx <?php echo $count == 1 ? 'show' : ''?>">
+													<div id="<?php echo $row['id']; ?>" class="life-style-post-bx <?php echo $countt == 1 ? 'show' : ''?>">
 														<div class="header-blog-carousel owl-carousel owl-carousel1 owl-btn-center-lr">
 												  	<?php $q2 = "SELECT * FROM `mch_sub_categories` WHERE `category_id` = ".$row['id']." AND `is_active` = 1";
 												  	$res2 = mysqli_query($conn, $q2);
@@ -305,20 +305,20 @@ a.phonemodal:hover { background: none; }
 														<div class="item">
 															<div class="blog-post blog-sm">
 																<div class="dlab-post-media">
-																	<a href="diet-in-hypothyroidism.php"><img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt=""></a>
+																	<a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt=""></a>
 																</div>
 																<div class="dlab-post-info">
 																	<div class="dlab-post-title ">
-																		<h5 class="post-title"><a href="diet-in-hypothyroidism.php"><?php echo $row2['name']; ?></a></h5>
+																		<h5 class="post-title"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo $row2['name']; ?></a></h5>
 																	</div>
 																</div>
 															</div>
 														</div>
 													<?php } } ?>
 														</div>
-														<div class="viewallpage"><a href="text-health-education.php">View All</a></div>
+														<div class="viewallpage"><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>">View All</a></div>
 													</div>
-											<?php $count++; } } ?>
+											<?php $countt++; } } ?>
 											<!-----Travel-End----->
 										</div>
 									</div>
@@ -336,16 +336,16 @@ a.phonemodal:hover { background: none; }
 													  $res = mysqli_query($conn, $q);
 													  if(mysqli_num_rows($res) > 0) {
 													  	while ($row = mysqli_fetch_assoc($res)) { ?>
-													  		<li><a href="text-health-education.php" id="st-<?php echo $row['id']; ?>" class="post-tabs <?php echo $count == 1 ? 'active' : ''?>"><?php echo $row['name']; ?></a></li>
+													  		<li><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>" id="st-<?php echo $row['id']; ?>" class="post-tabs <?php echo $count == 1 ? 'active' : ''?>"><?php echo $row['name']; ?></a></li>
 												<?php $count++; } } ?>
 											</ul>
 										</div>
 										<div class="life-style-post text-center">
-											<?php $count = 1; $q = "SELECT * FROM `mch_categories` WHERE `parent_category_id` = 2 AND `is_active` = 1";
+											<?php $countt = 1; $q = "SELECT * FROM `mch_categories` WHERE `parent_category_id` = 2 AND `is_active` = 1";
 												  $res = mysqli_query($conn, $q);
 												  if(mysqli_num_rows($res) > 0) {
 												  while ($row = mysqli_fetch_assoc($res)) { ?>
-													<div id="<?php echo $row['id']; ?>" class="life-style-post-bx <?php echo $count == 1 ? 'show' : ''?>">
+													<div id="<?php echo $row['id']; ?>" class="life-style-post-bx <?php echo $countt == 1 ? 'show' : ''?>">
 													<div class="header-blog-carousel owl-carousel owl-carousel1 owl-btn-center-lr">
 												  	<?php $q2 = "SELECT * FROM `mch_sub_categories` WHERE `category_id` = ".$row['id']." AND `is_active` = 1";
 												  	$res2 = mysqli_query($conn, $q2);
@@ -354,22 +354,22 @@ a.phonemodal:hover { background: none; }
 														<div class="item">
 															<div class="blog-post blog-sm">
 																<div class="dlab-post-media">
-																	<a href="procedure-and-interpretation.php">
-																		<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image'];; ?>" alt="">
+																	<a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>">
+																		<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt="">
 																	</a>
 																</div>
 																<div class="dlab-post-info">
 																	<div class="dlab-post-title ">
-																		<h5 class="post-title"><a href="procedure-and-interpretation.php"><?php echo $row2['name']; ?></a></h5>
+																		<h5 class="post-title"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo $row2['name']; ?></a></h5>
 																	</div>
 																</div>
 															</div>
 														</div>
 												<?php } } ?>
 															</div>
-															<div class="viewallpage"><a href="text-medical-education.php">View All</a></div>
+															<div class="viewallpage"><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>">View All</a></div>
 														</div>
-												<?php $count++; } } ?>
+												<?php $countt++; } } ?>
 										</div>
 									</div>
 								</div>
@@ -615,65 +615,19 @@ a.phonemodal:hover { background: none; }
 						<h4>Medical Books</h4>
 					</div>
 				</div>
-			  	<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Thyroid</p>
-						<img src="images/thyroid-khand_Page1.jpg" alt="">
-						<!-----<a href="#" class="phonemodal" data-toggle="modal" data-target="#phoneotp1"></a>----->
-						<a href="thyroid-khand.php?type=ZWJvb2s=" class="phonemodal"></a>
-					</div>
-				</div>
-				
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Blood</p>
-						<img src="images/human-khand_2.jpg" alt="">
-						<!-----<a href="#" class="phonemodal" data-toggle="modal" data-target="#phoneotp1"></a>----->
-						<a href="blood-khand.php?type=ZWJvb2s=" class="phonemodal"></a>
-					</div>
-				</div>
-				<!-----	
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Khand-2</p>
-						<img src="images/khand-2.jpg" alt="">
-						<a href="#" class="phonemodal"></a>
-					</div>
-				</div>
-				
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Khand-3</p>
-						<img src="images/khand-3.jpg" alt="">
-						<a href="#" class="phonemodal"></a>
-					</div>
-				</div>
-
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0 text-black">Khand-4</p>
-						<img src="images/khand-4.jpg" alt="">
-						<a href="#" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Khand-5</p>
-						<img src="images/khand-5.jpg" alt="">
-						<a href="#" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Khand-6</p>
-						<img src="images/khand-6.jpg" alt="">
-						<a href="#" class="phonemodal"></a>
-					</div>
-				</div>	
-				--------------->				
+				<?php $q = "SELECT * FROM `mch_sub_categories` WHERE `parent_category_id` = 2 AND `category_id` = 26 AND `is_active` = 1 ORDER BY `id` DESC";
+					$res = mysqli_query($conn, $q);
+					if(mysqli_num_rows($res) > 0) {
+					while ($row = mysqli_fetch_assoc($res)) { ?>
+					  	<div class="col-lg-2 col-md-2 col-sm-12">
+							<div class="bookcover bookcover1  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+								<p class="mb-0"><?php echo $row['name']; ?></p>
+								<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row['thumbnail_image']; ?>" alt="">
+								<!-----<a href="#" class="phonemodal" data-toggle="modal" data-target="#phoneotp1"></a>----->
+								<a href="thyroid-khand.php?type=ZWJvb2s=" class="phonemodal"></a>
+							</div>
+						</div>
+				<?php } } ?>
 			</div>
             <div class="row">
             <div class="col-md-6 brandheading1">
@@ -683,13 +637,12 @@ a.phonemodal:hover { background: none; }
                     <area target="_self" alt="Register Here" title="Register Here" href="registration.php" coords="523,61,727,103" shape="rect">
                 </map>
 		    </div>
-		    <div class="col-md-6 brandheading1">
-		        <!-------
-		        <img src="images/brand-register.png" usemap="#image-map">
+		   <div class="col-md-6 brandheading1 band2">
+		        <img src="images/Band_2.png" usemap="#image-map2">
 
-                <map name="image-map">
-                    <area target="_self" alt="Register Here" title="Register Here" href="registration.php" coords="523,61,727,103" shape="rect">
-                </map>-------->
+                <map name="image-map2">
+                    <area target="" alt="Registration" title="Registration" href="registration.php" coords="267,60,438,90" shape="rect">
+                </map>
 		    </div>
             </div>
 			</div>
@@ -723,7 +676,7 @@ a.phonemodal:hover { background: none; }
 			<!----ejournal---col-md---->
 			<div class="col-md-12 ejournal1size">	
 			<div class="row">
-			  	<div class="col-lg-2 col-md-2 col-sm-12">
+			  	<!-- <div class="col-lg-2 col-md-2 col-sm-12">
 					<div class="contributoor">
 						<div class="currentpage">
 							<h4>Current Month</h4>
@@ -732,100 +685,25 @@ a.phonemodal:hover { background: none; }
 							<div class="bookcover currentbokcover wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeInUp;">
 							<p class="mb-0 text-white">June 2023</p>
 							<img src="images/junebook-cover.jpg" alt="">
-							<!---<a href="#">Buy Now</a>---->
+							---<a href="#">Buy Now</a>----
 							<a href="ejournals-june-15-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-							<!-----<a href="ejournals-preview.php" class="phonemodal" data-toggle="modal" data-target="0#phoneotp1"></a>---->
+							-----<a href="ejournals-preview.php" class="phonemodal" data-toggle="modal" data-target="0#phoneotp1"></a>----
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">May 2023</p>
-						<img src="images/maybook-cover.jpg" alt="">
-						<a href="ejournals-may-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">April 2023</p>
-						<img src="images/aprilbook-cover.jpg" alt="">
-						<a href="ejournals-april-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Mar 2023</p>
-						<img src="images/book-cover3.jpg" alt="">
-						<a href="ejournals-march-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Feb 2023</p>
-						<img src="images/book-cover.jpg" alt="">
-						<a href="ejournals-feb-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Jan 2023</p>
-						<img src="images/book-cover2.jpg" alt="">
-						<!-------<a href="#" class="phonemodal" data-toggle="modal" data-target="#phoneotp1"></a>------>
-						<a href="ejournals-jan-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<!----
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0 text-black">April 2023</p>
-						<img src="images/aprilbook-cover.jpg" alt="">
-						<a href="ejournals-dec-2023.php" class="phonemodal"></a>					
-					</div>
-				</div>------->
-				
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Dec 2022</p>
-						<img src="images/book-cover08.jpg" alt="">
-						<a href="ejournals-dec-2022.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Nov 2022</p>
-						<img src="images/book-cover07.jpg" alt="">
-						<a href="ejournals-nov-2022.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Oct 2022</p>
-						<img src="images/book-cover06.jpg" alt="">
-						<a href="ejournals-oct-2022.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Sep 2022</p>
-						<img src="images/book-cover05.jpg" alt="">
-						<a href="ejournals-sep-2022.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						<p class="mb-0">Aug 2022</p>
-						<img src="images/book-cover04.jpg" alt="">
-						<a href="ejournals-aug-2022.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
-					</div>
-				</div>
+				</div> -->
+				<?php $count = 1; $q = "SELECT * FROM `mch_sub_categories` WHERE `parent_category_id` = 2 AND `category_id` = 21 AND `is_active` = 1 ORDER BY `id` DESC";
+					$res = mysqli_query($conn, $q);
+					if(mysqli_num_rows($res) > 0) {
+					while ($row = mysqli_fetch_assoc($res)) { ?>
+						<div class="col-lg-2 col-md-2 col-sm-12">
+							<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+								<p class="mb-0"><?php echo $row['name']; ?></p>
+								<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row['thumbnail_image']; ?>" alt="">
+								<a href="ejournals-may-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
+							</div>
+						</div>
+				<?php } } ?>
 			</div>
 			</div>
 			<!-----ejournal-col-md---->
@@ -914,68 +792,21 @@ a.phonemodal:hover { background: none; }
 					<span>Categories</span>
 				</div>
 				<div class="category-owl owl-carousel owl-category owl-btn-center-lr" style="transition: all 3s ease 0s;">
-					<div class="item">
-						<div class="category-box">
-							<div class="category-media">							
-								<img src="images/category/diet.jpg" alt="Diet">				
-							</div>
-							<div class="category-info">
-								<a href="text.php" class="category-title">Texts</a>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="category-box">
-							<div class="category-media">							
-								<img src="images/category/disorder-thyroid.jpg" alt="lung exercise covid patient">	
-							</div>
-							<div class="category-info">
-								<a href="video.php" class="category-title">VIDEOS</a>
+				<?php $q = "SELECT `mch_sub_categories`.*, `mch_categories`.`name` AS `category_name` FROM `mch_sub_categories` LEFT JOIN `mch_categories` ON `mch_categories`.`id` = `mch_sub_categories`.`category_id` WHERE `mch_sub_categories`.`parent_category_id` = 2 AND `mch_sub_categories`.`is_active` = 1 GROUP BY `mch_sub_categories`.`category_id` ORDER BY `mch_sub_categories`.`id` DESC";
+					$res = mysqli_query($conn, $q);
+					if(mysqli_num_rows($res) > 0) {
+					while ($row = mysqli_fetch_assoc($res)) { ?>
+						<div class="item">
+							<div class="category-box">
+								<div class="category-media">							
+									<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row['thumbnail_image']; ?>" alt="Diet">				
+								</div>
+								<div class="category-info">
+									<a href="text.php" class="category-title"><?php echo $row['category_name']; ?></a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<div class="category-box">
-							<div class="category-media">							
-								<img src="images/category/rakesh-20.jpg" alt="Travel">	
-							</div>
-							<div class="category-info">
-								<a href="casestudy-health-education.php" class="category-title">Case Studies</a>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="category-box">
-							<div class="category-media">							
-								<img src="images/category/student-and-resident-forum.jpg" alt="Travel">	
-							</div>
-							<div class="category-info">
-								<a href="student-health-education.php" class="category-title">Student and Resident Forum</a>
-							</div>
-						</div>
-					</div>
-					<!--------
-					<div class="item">
-						<div class="category-box">
-							<div class="category-media">							
-								<img src="images/category/diet-in-hypothyroidism.jpg" alt="Pulmonary Embolism(PE) MCQs">	
-							</div>
-							<div class="category-info">
-								<a href="javascript:void(0);" class="category-title">Online Event Diary</a>
-							</div>
-						</div>
-					</div>------>
-					<div class="item">
-						<div class="category-box">
-							<div class="category-media">							
-								<img src="images/category/categoryslide1.jpg" alt="Pulmonary Embolism(PE) MCQs">	
-							</div>
-							<div class="category-info">
-								<a href="ejournals.php" class="category-title">E Journal</a>
-							</div>
-						</div>
-					</div>
-
+				<?php } } ?>
 				</div>
 			</div>
 		</div>
@@ -1013,66 +844,26 @@ a.phonemodal:hover { background: none; }
 		<div class="section-full bg-white wow fadeIn" data-wow-duration="2s" data-wow-delay="0.9s">
 			<div class="container-fluid">
 				<div class="top-post-carousel owl-carousel owl-none">
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media">
-								<img src="images/healthedu1.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
+				<?php $q = "SELECT `mch_sub_categories`.*, `mch_categories`.`name` AS `category_name` FROM `mch_sub_categories` LEFT JOIN `mch_categories` ON `mch_categories`.`id` = `mch_sub_categories`.`category_id` WHERE `mch_sub_categories`.`parent_category_id` = 1 AND `mch_sub_categories`.`is_active` = 1 GROUP BY `mch_sub_categories`.`category_id` ORDER BY `mch_sub_categories`.`id` DESC";
+					$res = mysqli_query($conn, $q);
+					if(mysqli_num_rows($res) > 0) {
+					while ($row = mysqli_fetch_assoc($res)) { ?>
+						<div class="item">
+							<div class="blog-card blog-grid overlay-post left radius-sm">
+								<div class="dlab-post-media">
+									<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row['thumbnail_image']; ?>" alt=""/>
 								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
+								<div class="blog-card-info">
+									<div class="dlab-post-meta">
+										<ul>
+											<li class="post-tag"><a href="diet-in-hypothyroidism.php"><?php echo $row['category_name']; ?></a></li>
+										</ul>
+									</div>
+									<h4 class="title"><a href="diet-in-hypothyroidism.php"><?php echo $row['name']; ?></a></h4>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media">
-								<img src="images/healthedu2.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="lung-exercises.php">Video</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="lung-exercises.php">Lung exercises for covid patients</a></h4>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media">
-								<img src="images/healthedu3.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="rakesh20.php">Case Study</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="rakesh20.php">Rakesh 20</a></h4>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media">
-								<img src="images/healthedu4.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="acute-kidney-injury.php">Student And Resident Forum</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="acute-kidney-injury.php">Acute kidney injury</a></h4>
-							</div>
-						</div>
-					</div>
+				<?php } } ?>
 				</div>
 			</div>
 		</div>
@@ -1403,285 +1194,39 @@ a.phonemodal:hover { background: none; }
 		<div class="section-full bg-white hltheducatn wow fadeIn" data-wow-duration="2s" data-wow-delay="0.9s">
 			<div class="container-fluid">
 				<div class="top-post-carousel owl-carousel owl-category owl-none">
-				    <div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/35hvRrOsAIk" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
+					<?php $q = "SELECT * FROM `mch_sub_categories` WHERE `parent_category_id` = 1 AND `category_id` = 3 AND `is_active` = 1 ORDER BY `id` DESC";
+					$res = mysqli_query($conn, $q);
+					if(mysqli_num_rows($res) > 0) {
+					while ($row = mysqli_fetch_assoc($res)) {
+						if(explode('.', $row['video_url'])[1] == 'youtube') { ?>
+					    <div class="item">
+							<div class="blog-card blog-grid overlay-post left radius-sm">
+								<div class="dlab-post-media pankajvideo">
+									<iframe width="560" height="315" src="<?php echo $row['video_url']; ?>" title="YouTube video player" 
+									frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+									<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
+									<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
+									<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
+									<?php } else { ?>
+									<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
+									<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
+									<?php } else { ?>
+									<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
+									<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
+									<?php } } ?>
 								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!---News-how-to-Prevent-Diabetes----->
-				    
-				     <div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/gDqBp3slBrM" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
+								<!------
+								<div class="blog-card-info">
+									<div class="dlab-post-meta">
+										<ul>
+											<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
+										</ul>
+									</div>
+									<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
+								</div>------>
 							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-food-exchng-part-1-video---->
-				    
-				    <div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/bRdq_iMvobk" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-controll-diabetes-part-1-video---->
-					
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/v2Ta8OTgPhg" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-controll-diabetes-part-2-video---->
-					
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/A7HmeU3UbbI" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-controll-diabetes-part-3-video---->
-					
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/se3hOTkdyz4" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-food-exchng-part-3-video---->
-					
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/loyrC4KqkRQ" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-controll-diabetes-part-4-video---->
-					
-					<div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/ZgUL1mlT1Y0" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----control diabetes Part 1 डायबिटीज शरीर की दीमक-----video---->
-				    
-				    <div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/EXz9CcenBG4" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-food-exchng-part-5-video---->
-				    
-				    <div class="item">
-						<div class="blog-card blog-grid overlay-post left radius-sm">
-							<div class="dlab-post-media pankajvideo">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/RCZjrkSmHvE" title="YouTube video player" 
-								frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<?php if(!isset($_SESSION['reg_id']) && empty($_SESSION['reg_id'])) { ?>
-								<!----<a href="#" class="registersubscribe" data-toggle="modal" data-target="#phoneotp1">Register For Membership</a>----->
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#readvideo"></a>
-								<?php } else { ?>
-								<?php if((!isset($_SESSION['payment']) && empty($_SESSION['payment'])) && (!isset($_SESSION['is_referral_code']) && empty($_SESSION['is_referral_code']))) { ?>
-								<a href="#" class="videoreable" data-toggle="modal" data-target="#payvideo"></a>
-								<?php } else { ?>
-								<!-- <a href="#" class="registersubscribe" onclick="paynow('ejournal-april-2023');">Pay Now</a> -->
-								<!-- <a href="ebook/2023/Thyroid" class="registersubscribe">View Book</a> -->
-								<?php } } ?>
-							</div>
-							<!------
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-tag"><a href="diet-in-hypothyroidism.php">TEXT</a></li>
-									</ul>
-								</div>
-								<h4 class="title"><a href="diet-in-hypothyroidism.php">Diet in hypothyroidism</a></h4>
-							</div>------>
-						</div>
-					</div><!-----diabe-food-exchng-part-5-video---->
+						</div><!---News-how-to-Prevent-Diabetes----->
+					<?php } } } ?>
 				</div>
 			</div>
 			
@@ -1692,7 +1237,7 @@ a.phonemodal:hover { background: none; }
 			</div>
 		</div>
 		<!-- Health Session End -->
-<!-------End-------->
+		<!-------End-------->
 		<!-- Blog Post this Section is Deleted None-End---->
 		<!-- Blog Post End -->
 		<!-- Latest Post -->
@@ -1702,10 +1247,14 @@ a.phonemodal:hover { background: none; }
 					<h6 class="title-head text-uppercase"><span>Contributors</span></h6>
 				</div>
 				<div class="post-carousel owl-carousel owl-carousel00 btn-style-1">
+					<?php $q = "SELECT * FROM `mch_contributors` WHERE `is_active` = 1 ORDER BY `id` DESC LIMIT 10";
+					$res = mysqli_query($conn, $q);
+					if(mysqli_num_rows($res) > 0) {
+					while ($row = mysqli_fetch_assoc($res)) { ?>
 					<div class="item">
 						<div class="blog-card blog-grid post-boxed">
 							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic6.jpg" alt=""/>
+								<img src="../uploads/assets/uploaded_data/contributors_img/<?php echo $row['image']; ?>" alt=""/>
 							</div>
 							<div class="blog-card-info">
 								<div class="dlab-post-meta">
@@ -1715,7 +1264,7 @@ a.phonemodal:hover { background: none; }
 									</ul>
 								</div>
 								<!-- <h4 class="title"><a href="post-slide-show.php">Dr. Pankaj Kumar Agarwal</a></h4> -->
-								<h4><a href="dr-pankaj-kumar-agarwal.php">Dr. Pankaj Agarwal</a></h4>
+								<h4><a href="dr-pankaj-kumar-agarwal.php"><?php echo $row['name']; ?></a></h4>
 								<div class="dlab-feed-meta leftalign1">
 									<ul>
 										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
@@ -1735,553 +1284,7 @@ a.phonemodal:hover { background: none; }
 							</div>
 						</div>
 					</div><!---1End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic2.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-bipin.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-bipin.php">Dr. Bipin Sethi </a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---2End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic9.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-shashank-joshi.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>								
-								<h4><a href="dr-shashank-joshi.php">Dr. Shashank Joshi</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---3End--->
-
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/ajay-kumar.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-ajay-kumar.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-ajay-kumar.php">Dr. Ajay Kumar</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!---4End--->
-
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic4.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-sanjay-kalra.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-sanjay-kalra.php">Dr. Sanjay Kalra</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<!---5End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic1.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-prabhat-agrawal.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-prabhat-agrawal.php">Dr. Prabhat Agrawal</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---6End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic10.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-ruchika-garg.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-ruchika-garg.php">Dr. Ruchika Garg</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---7End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic5.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-nitin-kapoor.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-nitin-kapoor.php">Dr. Nitin Kapoor</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---8End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic12.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-arvind-govil.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-arvind-govil.php">Dr. Arvind K Govil</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---9End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic13.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-arvind-gupta.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-arvind-gupta.php">Dr. Arvind Gupta</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---10End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic11.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-rakesh-goel.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-rakesh-goel.php">Dr. Rakesh Goel</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---11End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic15.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-navin-kumar-soni.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-navin-kumar-soni.php">Dr Navin Kumar Soni</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---12End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic16.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-rohit-kapoor.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-rohit-kapoor.php">Dr. Rohit Kapoor</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---13End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic17.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-milind-bhole.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-milind-bhole.php">Dr. Milind Bhole</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---14End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic18.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-sagarika-mukherjee.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-sagarika-mukherjee.php">Dr. Sagarika Mukherjee</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---15End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic19.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-pradip-mate.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-pradip-mate.php">Dr. Pradip Mate</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---16End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic20.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-uma-shankar.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-uma-shankar.php">Dr. Uma Shankar Mukhopadhyay</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---17End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic21.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-deepak-dalaal.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-deepak-dalaal.php">Dr. Deepak Dalal</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---18End--->
-					<div class="item">
-						<div class="blog-card blog-grid post-boxed">
-							<div class="dlab-post-media">
-								<img src="images/blog/blog-md/blog/pic22.jpg" alt=""/>
-							</div>
-							<div class="blog-card-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-abhyudaya-verma.php">Contributor</a></li>
-										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
-									</ul>
-								</div>
-								<h4><a href="dr-abhyudaya-verma.php">Dr. Abhyudaya Verma</a></h4>
-								<div class="dlab-feed-meta leftalign1">
-									<ul>
-										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
-										<li class="post-dislike"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-down"></i><span>584</span></a></li> -->
-										<!-- <li class="post-view"><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>397</span></a></li> -->
-										<li class="post-share"><i class="fa fa-share-alt"></i><span>Share</span>
-											<ul>
-												<li><a href="https://www.facebook.com/profile.php?id=100063935207754"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="https://twitter.com/mch_drpankaj?lang=en"><i class="fa fa-twitter"></i></a></li>
-												<!-- <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li> -->
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><!---19End--->
-
-
+				<?php } } ?>
 				</div>
 			</div>
 		</div>

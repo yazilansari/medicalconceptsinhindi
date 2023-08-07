@@ -39,7 +39,7 @@
 							<?php include_once 'results_new.php'; ?>
 						</tbody>
 					</table>
-					<a class="btn btn-danger deleteAction" href="#" data-type="ajax-loader"><i class="material-icons">remove_circle</i> <span>Delete</span></a>
+					<!-- <a class="btn btn-danger deleteAction" href="#" data-type="ajax-loader"><i class="material-icons">remove_circle</i> <span>Delete</span></a> -->
 				<?php echo form_close(); ?>
 			</div>
 		</div>

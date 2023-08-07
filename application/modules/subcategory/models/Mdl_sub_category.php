@@ -515,7 +515,7 @@ class Mdl_sub_category extends MY_Model {
 					$image_name = $image_upload['u_response']['filename'];
 
 					$update_image = $this->_update(['id' => $subcategory_image_id],
-						['image' => $image_name], 'mch_sub_category_images');
+						$_FILES['sub_category_image']['type']=='video/mp4' ? ['video' => $image_name] : ['image' => $image_name], 'mch_sub_category_images');
 				
 				}
 			}
