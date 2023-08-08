@@ -22,28 +22,28 @@ include 'header.php';
 								</div>
 							</div>
 						</div>
-						<form method="post" class="dzForm" action="script/contact.php">
+						<form method="post" class="dzForm" action="handler/contact_handler.php">
 							<div class="dzFormMsg"></div>
-							<input type="hidden" value="Contact" name="dzToDo">
+							<input type="hidden" value="submit" name="submit">
 							<div class="row">
 								<div class="col-md-12 col-sm-12">
 									<div class="form-group">
-										<input name="Name" type="text" required="" class="form-control" placeholder="Name">
+										<input name="name" type="text" required="" class="form-control" placeholder="Name">
 									</div>
 								</div>
 								<div class="col-md-12 col-sm-12">
 									<div class="form-group">
-										<input name="Email" type="email" class="form-control" required="" placeholder="Email Id">
+										<input name="email" type="email" class="form-control" required="" placeholder="Email Id">
 									</div>
 								</div>
 								<div class="col-md-12 col-sm-12">
 									<div class="form-group">
-										<input name="Phone Number" type="number" class="form-control" required="" placeholder="Phone Number">
+										<input name="mobile" type="number" class="form-control" required="" placeholder="Phone Number">
 									</div>
 								</div>
 								<div class="col-md-12 col-sm-12">
 									<div class="form-group">
-										<textarea name="dzMessage" rows="4" class="form-control" required="" placeholder="Add Your Message"></textarea>
+										<textarea name="message" rows="4" class="form-control" required="" placeholder="Add Your Message"></textarea>
 									</div>
 								</div>
 								<!-- <div class="col-md-12 col-sm-12">
