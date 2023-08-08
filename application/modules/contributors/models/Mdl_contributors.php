@@ -176,10 +176,10 @@ class Mdl_contributors extends MY_Model {
 		$this->form_validation->set_rules('contributors_name', 'Contributors Name','trim|required|xss_clean|max_length[250]|unique_key[mch_contributors.name]|valid_name');
 		$this->form_validation->set_rules('contributors_designation','Contributors Designation','trim|required|max_length[250]|xss_clean');
 		$this->form_validation->set_rules('contributors_data','Contributors Data','trim|required|xss_clean');
-		$this->form_validation->set_rules('meta_title','Contributors Meta Title','trim|required|xss_clean');
-		$this->form_validation->set_rules('meta_description','Contributors Meta Description','trim|required|xss_clean');
-		$this->form_validation->set_rules('meta_slug','Contributors Meta Slug','trim|required|xss_clean');
-		$this->form_validation->set_rules('sort_order','Sort Sequence Order','trim|required|xss_clean');
+		// $this->form_validation->set_rules('meta_title','Contributors Meta Title','trim|required|xss_clean');
+		// $this->form_validation->set_rules('meta_description','Contributors Meta Description','trim|required|xss_clean');
+		// $this->form_validation->set_rules('meta_slug','Contributors Meta Slug','trim|required|xss_clean');
+		// $this->form_validation->set_rules('sort_order','Sort Sequence Order','trim|required|xss_clean');
 		
 
 		if(!isset($_FILES['contributors_image']) || $_FILES['contributors_image']['name']==''){
@@ -209,12 +209,12 @@ class Mdl_contributors extends MY_Model {
 			$data['designation'] = !empty($this->input->post('contributors_designation'))?$this->input->post('contributors_designation'):NULL;
 
 			$data['data'] = !empty($this->input->post('contributors_data'))?$this->input->post('contributors_data'):NULL;
-			$data['meta_title'] = !empty($this->input->post('meta_title'))?$this->input->post('meta_title'):'';
-			$data['meta_description'] = !empty($this->input->post('meta_description'))?$this->input->post('meta_description'):'';
-			$data['meta_keyword'] = !empty($this->input->post('meta_keyword'))?$this->input->post('meta_keyword'):'';
-			$data['meta_post_url'] = !empty($this->input->post('meta_post_url'))?$this->input->post('meta_post_url'):'';
-			$data['meta_slug'] = !empty($this->input->post('meta_slug'))?$this->input->post('meta_slug'):'';
-			$data['sort_order'] = !empty($this->input->post('sort_order'))?$this->input->post('sort_order'):'';
+			// $data['meta_title'] = !empty($this->input->post('meta_title'))?$this->input->post('meta_title'):'';
+			// $data['meta_description'] = !empty($this->input->post('meta_description'))?$this->input->post('meta_description'):'';
+			// $data['meta_keyword'] = !empty($this->input->post('meta_keyword'))?$this->input->post('meta_keyword'):'';
+			// $data['meta_post_url'] = !empty($this->input->post('meta_post_url'))?$this->input->post('meta_post_url'):'';
+			// $data['meta_slug'] = !empty($this->input->post('meta_slug'))?$this->input->post('meta_slug'):'';
+			// $data['sort_order'] = !empty($this->input->post('sort_order'))?$this->input->post('sort_order'):'';
 
 			$data['created_at'] = date('Y-m-d H:i:s');
 

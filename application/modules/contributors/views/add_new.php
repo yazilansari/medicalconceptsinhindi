@@ -27,7 +27,7 @@
                <label class="form-label">Contributors Image (jpg, jpeg, png)</label>
                 <div class="input-group">
                     <div class="form-line">
-                        <input type="file" id="contributors_image" name="contributors_image" class="form-control" >
+                        <input type="file" id="contributors_image" name="contributors_image" class="form-control" required>
                     </div>
                 </div>
 
@@ -39,13 +39,13 @@
                     </div>
                 </div>
 
-                <label class="form-label"> Contributors Meta Title <span class="required">*</span></label>
+                <label class="form-label"> Contributors Meta Title </label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="meta_title" name="meta_title" class="form-control" autocomplete="off">
                     </div>
                 </div>
-                <label class="form-label"> Contributors Meta Description <span class="required">*</span></label>
+                <label class="form-label"> Contributors Meta Description </label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="meta_description" name="meta_description" class="form-control" autocomplete="off">
@@ -63,14 +63,14 @@
                         <input type="text" id="meta_post_url" name="meta_post_url" class="form-control" autocomplete="off" >
                     </div>
                 </div>
-                <label class="form-label">Contributors Meta Slug <span class="required">*</span></label>
+                <label class="form-label">Contributors Meta Slug </label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="meta_slug" name="meta_slug" class="form-control" autocomplete="off">
                     </div>
                 </div>
 
-                <label class="form-label">Sort Sequence Number <span class="required">*</span></label>
+                <label class="form-label">Sort Sequence Number </label>
                 <div class="input-group">
                     <div class="form-line">
                         <input type="text" id="sort_order" name="sort_order" class="form-control" autocomplete="off" maxlength="10">

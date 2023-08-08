@@ -8,6 +8,7 @@ $id = base64_decode($_GET['id']);
 $q = "SELECT * FROM `mch_categories` WHERE `is_active` = 1 AND `id` = $id";
 $res = mysqli_query($conn, $q);
 $row = mysqli_fetch_assoc($res);
+// echo strtolower($row['name']);die();
 ?>
     <!-- header END -->
 
@@ -17,7 +18,7 @@ $row = mysqli_fetch_assoc($res);
 		<div class="section-full content-inner-1">
 			<div class="container">
 				<div class="section-head text-center">
-					<span><?php echo strtoupper($row['name']); ?></span>
+					<span><?php echo strtolower($row['name']); ?></span>
 				</div>
 				<div class="row blog-box-style1">
 					<div class="col-md-8 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.2s; animation-name: fadeInUp;">
@@ -33,16 +34,29 @@ $row = mysqli_fetch_assoc($res);
 										<?php if(mysqli_num_rows($res3) > 0) { 
 											$row3 = mysqli_fetch_assoc($res3); ?>
 											<div class="dlab-post-media">
-												<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row3['image']; ?>" alt="">
+												<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
+													<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row3['image']; ?>" alt="">
+												<?php } else { ?>
+													<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt="">
+												<?php } ?>
 											</div>
 										 <?php } ?>
 											<div class="blog-card-info">
 												<div class="dlab-post-meta">
 													<ul>
-														<li class="post-tag"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo strtoupper($row['name']); ?></a></li>
+														<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
+															<li class="post-tag"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo strtoupper($row['name']); ?></a></li>
+														<?php } else { ?>
+															<li class="post-tag"><a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row2['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>"><?php echo strtoupper($row['name']); ?></a></li>
+														<?php } ?>
 													</ul>
 												</div>
-												<h4 class="title"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo $row2['name']; ?></a></h4>
+												<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
+													<h4 class="title"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo $row2['name']; ?></a></h4>
+												<?php } else { ?>
+													<h4 class="title"><a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row2['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>"><?php echo $row2['name']; ?></a></h4>
+												<?php } ?>
+
 											</div>
 										</div>
 									</div>
@@ -61,7 +75,7 @@ $row = mysqli_fetch_assoc($res);
 										<h4 class="title"><a href="idli.php">इडली</a></h4>
 									</div>
 								</div>
-							</div> --><!---1End--
+							</div> --><!---1End-->
 
 							<!-- <div class="col-md-6 col-sm-12">
 								<div class="blog-card blog-grid overlay-post left"> 

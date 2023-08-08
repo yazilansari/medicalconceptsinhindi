@@ -239,20 +239,36 @@
 													<div class="item">
 														<div class="blog-post blog-sm">
 															<div class="dlab-post-media">
-																<a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>">
-																	<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt="">
-																</a>
+																<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
+																	<a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>">
+																		<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt="">
+																	</a>
+																	<?php } else { ?>
+																		<a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row2['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>">
+																		<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt="">
+																	</a>
+																	<?php } ?>
 															</div>
 															<div class="dlab-post-info">
 																<div class="dlab-post-title ">
-																	<h5 class="post-title"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo $row2['name']; ?></a></h5>
+																	<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
+																		<h5 class="post-title"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo $row2['name']; ?></a></h5>
+																	<?php } else { ?>
+																		<h5 class="post-title"><a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row2['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>"><?php echo $row2['name']; ?></a></h5>
+																	</a>
+																	<?php } ?>
 																</div>
 															</div>
 														</div>
 													</div>
 											<?php } } ?>
 														</div>
-														<div class="viewallpage"><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>">View All</a></div>
+														<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
+															<div class="viewallpage"><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>">View All</a></div>
+														<?php } else { ?>
+															<div class="viewallpage"><a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>">View All</a></div>
+																	</a>
+														<?php } ?>
 													</div>
 											<?php $countt++; } } ?>
 									</div>

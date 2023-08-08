@@ -354,20 +354,34 @@ a.phonemodal:hover { background: none; }
 														<div class="item">
 															<div class="blog-post blog-sm">
 																<div class="dlab-post-media">
+																	<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
 																	<a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>">
 																		<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt="">
 																	</a>
+																	<?php } else { ?>
+																		<a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row2['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>">
+																		<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row2['thumbnail_image']; ?>" alt="">
+																	</a>
+																	<?php } ?>
 																</div>
 																<div class="dlab-post-info">
-																	<div class="dlab-post-title ">
+																	<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
 																		<h5 class="post-title"><a href="sub-category-details.php?id=<?php echo base64_encode($row2['id']); ?>"><?php echo $row2['name']; ?></a></h5>
-																	</div>
+																	<?php } else { ?>
+																		<h5 class="post-title"><a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row2['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>"><?php echo $row2['name']; ?></a></h5>
+																	</a>
+																	<?php } ?>
 																</div>
 															</div>
 														</div>
 												<?php } } ?>
 															</div>
-															<div class="viewallpage"><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>">View All</a></div>
+															<?php if(strtolower($row['name']) != 'e journal' && strtolower($row['name']) != 'e book') { ?>
+																<div class="viewallpage"><a href="sub-categories.php?id=<?php echo base64_encode($row['id']); ?>">View All</a></div>
+															<?php } else { ?>
+																<div class="viewallpage"><a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row['id']); ?>&type=<?php echo base64_encode(strtolower(str_replace(' ', '', $row['name']))); ?>">View All</a></div>
+																	</a>
+															<?php } ?>
 														</div>
 												<?php $countt++; } } ?>
 										</div>
@@ -624,7 +638,7 @@ a.phonemodal:hover { background: none; }
 								<p class="mb-0"><?php echo $row['name']; ?></p>
 								<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row['thumbnail_image']; ?>" alt="">
 								<!-----<a href="#" class="phonemodal" data-toggle="modal" data-target="#phoneotp1"></a>----->
-								<a href="thyroid-khand.php?type=ZWJvb2s=" class="phonemodal"></a>
+								<a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row['id']); ?>&type=ZWJvb2s=" class="phonemodal"></a>
 							</div>
 						</div>
 				<?php } } ?>
@@ -700,7 +714,7 @@ a.phonemodal:hover { background: none; }
 							<div class="bookcover bookcover1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
 								<p class="mb-0"><?php echo $row['name']; ?></p>
 								<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row['thumbnail_image']; ?>" alt="">
-								<a href="ejournals-may-2023.php?type=ZWpvdXJuYWw=" class="phonemodal"></a>
+								<a href="ebook-ejournal-details.php?id=<?php echo base64_encode($row['id']); ?>&type=ZWpvdXJuYWw=" class="phonemodal"></a>
 							</div>
 						</div>
 				<?php } } ?>
@@ -802,7 +816,7 @@ a.phonemodal:hover { background: none; }
 									<img src="../uploads/assets/uploaded_data/subcategory_img/<?php echo $row['thumbnail_image']; ?>" alt="Diet">				
 								</div>
 								<div class="category-info">
-									<a href="text.php" class="category-title"><?php echo $row['category_name']; ?></a>
+									<a href="sub-categories.php?id=<?php echo base64_encode($row['category_id']); ?>" class="category-title"><?php echo $row['category_name']; ?></a>
 								</div>
 							</div>
 						</div>
@@ -856,10 +870,10 @@ a.phonemodal:hover { background: none; }
 								<div class="blog-card-info">
 									<div class="dlab-post-meta">
 										<ul>
-											<li class="post-tag"><a href="diet-in-hypothyroidism.php"><?php echo $row['category_name']; ?></a></li>
+											<li class="post-tag"><a href="sub-categories.php?id=<?php echo base64_encode($row['category_id']); ?>"><?php echo $row['category_name']; ?></a></li>
 										</ul>
 									</div>
-									<h4 class="title"><a href="diet-in-hypothyroidism.php"><?php echo $row['name']; ?></a></h4>
+									<h4 class="title"><a href="sub-category-details.php?id=<?php echo base64_encode($row['id']); ?>"><?php echo $row['name']; ?></a></h4>
 								</div>
 							</div>
 						</div>
@@ -1259,12 +1273,12 @@ a.phonemodal:hover { background: none; }
 							<div class="blog-card-info">
 								<div class="dlab-post-meta">
 									<ul>
-										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="dr-pankaj-kumar-agarwal.php">Contributor</a></li>
+										<li class="post-category"><!-- <a href="javascript:void(0);">beauty</a>, --> <a href="contributor-details.php?id=<?php echo base64_encode($row['id']); ?>">Contributor</a></li>
 										<!-- <li class="post-date">at <span>12 August 2020</span></li> -->
 									</ul>
 								</div>
 								<!-- <h4 class="title"><a href="post-slide-show.php">Dr. Pankaj Kumar Agarwal</a></h4> -->
-								<h4><a href="dr-pankaj-kumar-agarwal.php"><?php echo $row['name']; ?></a></h4>
+								<h4><a href="contributor-details.php?id=<?php echo base64_encode($row['id']); ?>"><?php echo $row['name']; ?></a></h4>
 								<div class="dlab-feed-meta leftalign1">
 									<ul>
 										<!-- <li class="post-like"><a href="javascript:void(0);"><i class="fa fa-thumbs-o-up"></i><span>231</span></a></li>
